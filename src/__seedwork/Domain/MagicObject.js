@@ -1,9 +1,8 @@
 
 export default class MagicObject {
-    constructor(
-        
-    ){
-        console.log(this)
+    #props
+    get(propName, props){
+        console.log(props);
+        return props[propName];
     }
-
 }
