@@ -1,0 +1,9 @@
+{
+    "extends": "standard",
+    "rules": {
+        "no-unneeded-ternary":0,
+        "no-unused-vars":"warn",
+        "prefer-regex-literals":0,
+        "no-useless-escape":"off"
+    }
+  }
