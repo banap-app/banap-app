@@ -1,4 +1,4 @@
-import AbstractError from './Exceptions/AbstractError'
+import AbstractError from './Exceptions/AbstractError.js'
 
 export default class Abstract {
   constructor () {
