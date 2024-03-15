@@ -13,5 +13,3 @@ export default class Entity extends Abstract {
     return props
   }
 }
-
-let e = new Entity()

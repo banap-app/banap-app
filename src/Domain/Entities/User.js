@@ -2,7 +2,7 @@ import { v4, validate as validateUuid } from 'uuid'
 import Email from '../ValueObject/Email.js'
 import DomainValidator from '../Validators/DomainValidator.js'
 import Password from '../ValueObject/Password.js'
-import TypeException from '../Exceptions/TypeException.js'
+import TypeException from '../../__seedwork/Domain/Exceptions/TypeException.js'
 import Entity from '../../__seedwork/Domain/Entity.js'
 
 /**
@@ -13,7 +13,10 @@ import Entity from '../../__seedwork/Domain/Entity.js'
  * @property {string} email - O email do usuário
  */
 
-class User extends Entity {
+/**
+ * Classe que representa um usuário no sistema.
+ */
+export default class User extends Entity {
   /**
    * @type {PrivateProperties}
    */
@@ -25,14 +28,17 @@ class User extends Entity {
    * @param {string} password - A senha do usuário
    * @param {string} email - O email do usuário
    * @param {UUID} id - O uid do usuário
+   * @param {boolean} active - O estado de ativação do usuário
    */
-  constructor (name, password, email, id) {
+  constructor (name, password, email, id, active) {
     super()
     this.#props = {
       id: id ? id : v4(),
       name,
       password: new Password(password).toString(),
-      email: new Email(email).toString()
+      email: new Email(email).toString(),
+      created_at: new Date(),
+      active
     }
     this.validate()
   }
@@ -46,10 +52,19 @@ class User extends Entity {
     return this.#props[propName]
   }
 
+  /**
+   * Converte as propriedades do usuário em um dicionário.
+   * @returns {object} Um dicionário contendo todas as propriedades do usuário.
+   */
   to_dict () {
     return super.to_dict(this.#props)
   }
 
+  /**
+   * Valida as propriedades da instância de User.
+   * @throws {TypeException} Lança uma exceção se alguma propriedade não estiver no formato correto.
+   * @throws {Error} Lança uma exceção se o ID não for um UUID válido.
+   */
   validate () {
     if (typeof this.get('name') !== 'string') {
       throw new TypeException('Name must be a string')
@@ -64,6 +79,9 @@ class User extends Entity {
 
     if (!validateUuid(this.get('id'))) {
       throw new Error('ID must be a valid UUID')
+    }
+    if (typeof this.get('active') !== 'boolean') {
+      throw new TypeException('Active must be a boolean')
     }
     DomainValidator.str_is_not_empty(this.get('name'))
     DomainValidator.str_is_not_empty(this.get('password'))
