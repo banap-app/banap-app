@@ -60,6 +60,14 @@ export default class User extends Entity {
     return super.to_dict(this.#props)
   }
 
+  deactivate () {
+    this.#props.active = false
+  }
+
+  activate () {
+    this.#props.active = true
+  }
+
   /**
    * Valida as propriedades da instância de User.
    * @throws {TypeException} Lança uma exceção se alguma propriedade não estiver no formato correto.
