@@ -8,7 +8,7 @@ export default class Abstract {
    * Cria uma instância de Abstract.
    * @throws {AbstractError} Lança uma exceção se esta classe for instanciada diretamente.
    */
-  constructor() {
+  constructor () {
     if (new.target === Abstract) {
       throw new AbstractError('Cannot instantiate abstract class directly.')
     }
