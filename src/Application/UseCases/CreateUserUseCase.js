@@ -1,5 +1,6 @@
 import User from '../../Domain/Entities/User.js'
 import UserRepository from '../../Domain/Repositories/UserRepositories/UserRepository.js'
+import UseCase from '../../__seedwork/Application/UseCase.js'
 import EncryptionService from '../Adapters/EncryptionService.js'
 
 /**
@@ -8,7 +9,7 @@ import EncryptionService from '../Adapters/EncryptionService.js'
  * Descrição:
  *   Esta classe representa o caso de uso para criar um novo usuário no sistema.
  */
-export default class CreateUserUseCase {
+export default class CreateUserUseCase extends UseCase {
   /**
    * Construtor da classe CreateUserUseCase
    *
@@ -18,6 +19,7 @@ export default class CreateUserUseCase {
    * @throws {Error} Lança um erro se userRepository ou encryptionService não forem fornecidos ou não forem do tipo esperado.
    */
   constructor (userRepository, encryptionService) {
+    super()
     if (!userRepository || !(userRepository instanceof UserRepository)) {
       throw new Error('userRepository is required and must be an instance of UserRepository')
     }
@@ -26,6 +28,7 @@ export default class CreateUserUseCase {
     }
 
     this.userRepository = userRepository
+    this.encryptionService = encryptionService
   }
 
   /**
@@ -50,6 +53,19 @@ export default class CreateUserUseCase {
     }
   }
 
+  static OutputClass = class {
+    /**
+     * Construtor da classe OutputClass
+     *
+     * @param {boolean} success Indicador de sucesso.
+     * @param {string} message Mensagem de erro.
+     */
+    constructor (success, message) {
+      this.success = success
+      this.message = message
+    }
+  }
+
   /**
    * Método execute
    *
@@ -68,12 +84,14 @@ export default class CreateUserUseCase {
     }
 
     if (this.userRepository.findByEmail(data.email)) {
-      return { success: false, message: 'Email already in use' }
+      return new CreateUserUseCase.OutputClass(false, 'Email is being used')
     }
+
+    data.password = this.encryptionService.encrypt(data.password)
 
     const user = new User(data.name, data.password, data.email, '', true)
     this.userRepository.save(user)
 
-    return { success: true, message: 'User created successfully' }
+    return new CreateUserUseCase.OutputClass(true, 'Success created user')
   }
 }

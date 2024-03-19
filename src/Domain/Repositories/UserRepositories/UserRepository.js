@@ -1,4 +1,4 @@
-import Abstract from '../../../__seedwork/Domain/Abstract.js'
+import Abstract from '../../../__seedwork/Abstract.js'
 import User from '../../Entities/User.js'
 import DomainException from '../../Exceptions/DomainException.js'
 

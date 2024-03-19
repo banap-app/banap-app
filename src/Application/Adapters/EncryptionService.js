@@ -1,4 +1,4 @@
-import Abstract from '../../__seedwork/Domain/Abstract.js'
+import Abstract from '../../__seedwork/Abstract.js'
 
 /**
  * Classe EncryptionService

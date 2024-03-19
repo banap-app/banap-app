@@ -40,7 +40,7 @@ export default class Engineer extends Entity {
       password: new Password(password).toString(),
       email: new Email(email).toString(),
       active,
-      createdAt: new Date().toISOString(),
+      created_at: new Date().toISOString(),
       Crea: new Crea(crea)
     }
     this.validate()
@@ -65,7 +65,7 @@ export default class Engineer extends Entity {
     if (typeof this.get('id') !== 'string') {
       throw new TypeException('ID must be a string')
     }
-    if (typeof this.get('createdAt') !== 'string') {
+    if (typeof this.get('created_at') !== 'string') {
       throw new TypeException('CreateAt must be a string')
     }
     if (typeof this.get('active') !== 'boolean') {

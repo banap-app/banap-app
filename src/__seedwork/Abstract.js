@@ -1,4 +1,4 @@
-import AbstractError from './Exceptions/AbstractError.js'
+import AbstractError from './AbstractError.js'
 
 /**
  * Classe abstrata que serve como base para outras classes.
