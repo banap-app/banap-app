@@ -20,4 +20,8 @@ export default class EncryptionService extends Abstract {
     // Lógica para criptografar a senha
     return password
   }
+
+  verifyPasswords (password, hashedPassword) {
+    return Boolean
+  }
 }
