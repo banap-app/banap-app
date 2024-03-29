@@ -37,7 +37,7 @@ export default class User extends Entity {
       name,
       password: new Password(password).toString(),
       email: new Email(email).toString(),
-      created_at: new Date(),
+      created_at: new Date().toISOString(),
       active
     }
     this.validate()
@@ -76,6 +76,10 @@ export default class User extends Entity {
   validate () {
     if (typeof this.get('name') !== 'string') {
       throw new TypeException('Name must be a string')
+    }
+
+    if (typeof this.get('created_at') !== 'string') {
+      throw new TypeException('CreateAt must be a string')
     }
 
     if (typeof this.get('password') !== 'string') {

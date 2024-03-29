@@ -41,7 +41,7 @@ describe('User Tests', () => {
       name: 'Asher',
       password: 'Novelli#2@as',
       email: 'asher@gmail.com',
-      created_at: expect.any(Date),
+      created_at: new Date().toISOString(),
       active: true
     })
   })
