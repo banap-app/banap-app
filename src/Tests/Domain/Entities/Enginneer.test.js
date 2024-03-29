@@ -29,5 +29,9 @@ describe('Tests of Engineer Class', () => {
     expect(engineer.get('id')).toBeDefined()
   })
 
-  test('Test deactivate function', () => {})
+  test('Test deactivate function', () => {
+    const engineer = Sut.makeSut()
+    engineer.deactivate()
+    expect(engineer.get('active')).toBe(false)
+  })
 })
