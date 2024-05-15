@@ -34,7 +34,7 @@ describe('User Tests', () => {
     expect(user.get('active')).toBe(true)
   })
 
-  test('', () => {
+  test('test match object', () => {
     const user = Sut.makeSut()
     expect(user.to_dict()).toMatchObject({
       id: 'd5afc26b-eb03-452d-b855-de51c811d691',
