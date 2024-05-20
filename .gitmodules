@@ -1,0 +1,3 @@
+[submodule "api-banap-app"]
+	path = api-banap-app
+	url = https://github.com/banap-app/api-banap-app
