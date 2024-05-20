@@ -1,5 +1,5 @@
-import UserRepository from '../../../Domain/Repositories/UserRepositories/UserRepository'
-import UseCase from '../../../__seedwork/Application/UseCase'
+import UserRepository from '../../../Domain/Repositories/UserRepositories/UserRepository.js'
+import UseCase from '../../../__seedwork/Application/UseCase.js'
 
 /**
  * Classe DeleteUserUseCase

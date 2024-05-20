@@ -1,7 +1,7 @@
 import User from '../../../Domain/Entities/User.js'
 import UserRepository from '../../../Domain/Repositories/UserRepositories/UserRepository.js'
-import UseCase from '../../__seedwork/Application/UseCase.js'
-import EncryptionService from '../Adapters/EncryptionService.js'
+import UseCase from '../../../__seedwork/Application/UseCase.js'
+import EncryptionService from '../../Adapters/EncryptionService.js'
 
 /**
  * Classe CreateUserUseCase
@@ -83,15 +83,14 @@ export default class CreateUserUseCase extends UseCase {
       throw new Error('Data is not an instance of InputClass')
     }
 
-    if (this.userRepository.findByEmail(data.email)) {
+    if (await this.userRepository.findByEmail(data.email) !== null) {
       return new CreateUserUseCase.OutputClass(false, 'Email is being used')
     }
-
     data.password = this.encryptionService.encrypt(data.password)
 
     const user = new User(data.name, data.password, data.email, '', true)
-    this.userRepository.save(user)
-
+    const output = await this.userRepository.save(user)
+    console.log(output)
     return new CreateUserUseCase.OutputClass(true, 'Success created user')
   }
 }

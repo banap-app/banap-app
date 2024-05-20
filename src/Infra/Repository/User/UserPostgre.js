@@ -34,9 +34,9 @@ export default class UserPostgre extends UserRepository {
   }
 
   async findByEmail (email) {
-    const emailType = new Email('asher@gmail.com')
-    super.findByEmail(emailType)
-    return { user: 'tester' }
+    const emailType = new Email(email)
+    super.findByEmail(emailType.toString())
+    return null
   }
 
   async findById (id) {
