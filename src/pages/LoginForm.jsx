@@ -1,4 +1,4 @@
-import Frame from './components/Frame'
+import Frame from '../components/Frame'
 
 function Login() {
   return (
@@ -21,7 +21,7 @@ function Login() {
                     id='email'
                     autoComplete='email'
                     required
-                    className='w-[243px] border-b-[0.5px] border-black/75 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]/75'
+                    className='w-[243px] border-b-[1px] border-black/30 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]/75'
                   />
                 </div>
                 <div className='flex flex-col gap-2.5'>
@@ -34,7 +34,7 @@ function Login() {
                     id='password'
                     autoComplete='current-password'
                     required
-                    className='w-[243px] border-b-[0.5px] border-black/75 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]/75'
+                    className='w-[243px] border-b-[1px] border-black/30 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]/75'
                   />
                 </div>
               </div>
@@ -43,8 +43,7 @@ function Login() {
               </p>
               <button
                 type='submit'
-                required
-                className='w-[243px] h-[38px] rounded-md mt-[15px] bg-[#1ea81e] font-extrabold text-white drop-shadow-lg'
+                className='w-[243px] h-[38px] rounded-md mt-[15px] bg-[#1ea81e] font-extrabold text-white'
               >
                 Entrar
               </button>
