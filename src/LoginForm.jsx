@@ -8,7 +8,7 @@ function Login() {
           <p className='text-xl font-regular text-[#1a5d1a] text-center'>
             Entre com sua<br></br>conta!
           </p>
-          <form method='POST'>
+          <form>
             <div className='w-[244px] h-[244px]'>
               <div className='flex flex-col gap-5'>
                 <div className='flex flex-col gap-2.5'>
@@ -19,18 +19,20 @@ function Login() {
                     type='email'
                     name='email'
                     id='email'
+                    autoComplete='email'
                     required
                     className='w-[243px] border-b-[0.5px] border-black/75 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]/75'
                   />
                 </div>
                 <div className='flex flex-col gap-2.5'>
-                  <label htmlFor='' className='text-xl font-light'>
+                  <label htmlFor='password' className='text-xl font-light'>
                     Senha
                   </label>
                   <input
                     type='password'
                     name='password'
                     id='password'
+                    autoComplete='current-password'
                     required
                     className='w-[243px] border-b-[0.5px] border-black/75 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]/75'
                   />
