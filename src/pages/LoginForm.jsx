@@ -5,9 +5,14 @@ function Login() {
     <Frame>
       <div className='w-full h-full flex flex-col items-center justify-center'>
         <div className='flex flex-col gap-10'>
-          <p className='text-xl font-regular text-[#1a5d1a] text-center'>
-            Entre com sua<br></br>conta!
-          </p>
+          <div className='flex flex-col gap-10'>
+            <p className='text-[32px] font-extrabold text-[#1a5d1a] text-center'>
+              Banap
+            </p>
+            <p className='text-xl font-regular text-[#1a5d1a] text-center'>
+              Entre com sua<br></br>conta!
+            </p>
+          </div>
           <form>
             <div className='w-[244px] h-[244px]'>
               <div className='flex flex-col gap-5'>

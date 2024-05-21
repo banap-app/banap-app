@@ -38,6 +38,7 @@ function Register() {
                   type='email'
                   name='email'
                   id='email'
+                  autoComplete='email'
                   required
                   className='w-[330px] border-b border-black/30 pb-[5px] outline-none text-sm font-regular text-[#1a5d1a] placeholder:text-[#1a5d1a]'
                 />
