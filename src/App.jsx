@@ -1,7 +1,7 @@
 import Frame from './components/Frame'
 
 function App() {
-  return <Frame />
+  return <Frame></Frame>
 }
 
 export default App
