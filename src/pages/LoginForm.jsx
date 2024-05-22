@@ -7,7 +7,7 @@ import {
   LowerBubbles,
 } from '../assets/LoginAssets'
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate()
 
   return (

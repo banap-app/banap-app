@@ -2,7 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { UpperLines, LowerLines } from '../assets/RegistrationAssets'
 
-function Register() {
+const Register = () => {
   const navigate = useNavigate()
 
   return (

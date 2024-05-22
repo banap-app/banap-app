@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Lines, Image } from '../assets/InitialPageAssets'
 
-function InitialPage() {
+const InitialPage = () => {
   return (
     <div className='relative flex h-full w-full flex-col items-center'>
       <div className='absolute top-[315px] z-10'>
