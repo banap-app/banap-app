@@ -1,18 +1,36 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import {
+  UpperLines,
+  LowerLines,
+  UpperBubbles,
+  LowerBubbles,
+} from '../assets/LoginAssets'
 
 function Login() {
   const navigate = useNavigate()
 
   return (
-    <div className='relative flex h-full w-full flex-col items-center justify-center'>
+    <div className='relative flex h-full w-full flex-col items-center'>
+      <div className='absolute right-0 top-[-4px]'>
+        <UpperLines />
+      </div>
+      <div className='absolute bottom-0 left-0'>
+        <LowerLines />
+      </div>
+      <div className='absolute right-[7px] top-[158px]'>
+        <UpperBubbles />
+      </div>
+      <div className='absolute bottom-[222px] left-[46px]'>
+        <LowerBubbles />
+      </div>
       <div
         onClick={() => navigate(-1)}
         className='absolute left-[30px] top-[40px]'
       >
         <ArrowLeft />
       </div>
-      <div className='flex flex-col items-center gap-10'>
+      <div className='mt-[140px] flex flex-col items-center gap-10'>
         <div className='flex flex-col gap-10'>
           <p className='text-center text-[32px] font-extrabold text-[#1a5d1a]'>
             Banap
