@@ -1,4 +1,4 @@
-import InitialPageImage from './InitialPageImage.png'
+import InitialPageImage from './imgs/InitialPageImage.png'
 
 export const Lines = () => {
   return (

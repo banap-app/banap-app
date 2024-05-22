@@ -2,7 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { UpperLines, LowerLines } from '../assets/RegistrationAssets'
 
-const Register = () => {
+const RegisterPage = () => {
   const navigate = useNavigate()
 
   return (
@@ -87,4 +87,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default RegisterPage

@@ -7,7 +7,7 @@ import {
   LowerBubbles,
 } from '../assets/LoginAssets'
 
-const Login = () => {
+const LoginPage = () => {
   const navigate = useNavigate()
 
   return (
@@ -93,4 +93,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginPage

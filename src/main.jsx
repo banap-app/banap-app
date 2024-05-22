@@ -5,8 +5,9 @@ import './index.css'
 import ErrorPage from './pages/ErrorPage.jsx'
 import Frame from './components/Frame.jsx'
 import InitialPage from './pages/InitialPage.jsx'
-import Login from './pages/LoginForm.jsx'
-import Register from './pages/RegistrationForm.jsx'
+import LoginPage from './pages/LoginForm.jsx'
+import RegisterPage from './pages/RegistrationForm.jsx'
+import MainPage from './pages/MainPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,8 +16,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <InitialPage /> },
-      { path: 'login', element: <Login /> },
-      { path: 'register', element: <Register /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'register', element: <RegisterPage /> },
+      { path: 'app', element: <MainPage /> },
     ],
   },
 ])
