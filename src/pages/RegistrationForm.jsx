@@ -1,11 +1,18 @@
 import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { UpperLines, LowerLines } from '../assets/RegistrationAssets'
 
 function Register() {
   const navigate = useNavigate()
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
+      <div className='absolute left-[5px] top-[17px]'>
+        <UpperLines />
+      </div>
+      <div className='absolute bottom-[40px]'>
+        <LowerLines />
+      </div>
       <div
         onClick={() => navigate(-1)}
         className='absolute left-[30px] top-[40px]'
@@ -70,7 +77,7 @@ function Register() {
           </div>
           <button
             type='submit'
-            className='mt-[148px] h-[38px] w-[243px] rounded-md bg-[#1ea81e] text-sm font-extrabold text-white'
+            className='z-10 mt-[148px] h-[38px] w-[243px] rounded-md bg-[#1ea81e] text-sm font-extrabold text-white'
           >
             Cadastrar
           </button>
