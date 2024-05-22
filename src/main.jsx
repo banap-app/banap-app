@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom'
+import './index.css'
 import ErrorPage from './pages/ErrorPage.jsx'
 import Root from './pages/Root.jsx'
 import Login from './pages/LoginForm.jsx'
 import Register from './pages/RegistrationForm.jsx'
-import './index.css'
 
 const router = createBrowserRouter([
   {

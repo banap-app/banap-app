@@ -1,11 +1,17 @@
 import Frame from '../components/Frame'
 import { ArrowLeft } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 function Register() {
+  const navigate = useNavigate()
+
   return (
     <Frame>
       <div className='relative flex h-full w-full flex-col items-center justify-center'>
-        <div className='absolute left-[30px] top-[40px]'>
+        <div
+          onClick={() => navigate(-1)}
+          className='absolute left-[30px] top-[40px]'
+        >
           <ArrowLeft />
         </div>
         <div className='mt-[40px] flex w-[330px] flex-col items-start justify-center gap-2.5'>
