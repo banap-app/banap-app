@@ -5,9 +5,10 @@ import './index.css'
 import ErrorPage from './pages/ErrorPage.jsx'
 import Frame from './components/Frame.jsx'
 import InitialPage from './pages/InitialPage.jsx'
-import LoginPage from './pages/LoginForm.jsx'
-import RegisterPage from './pages/RegistrationForm.jsx'
+import LoginPage from './pages/LoginPage.jsx'
+import RegisterPage from './pages/RegisterPage.jsx'
 import MainPage from './pages/MainPage.jsx'
+import PropertyRegister from './pages/PropertyRegisterPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: 'login', element: <LoginPage /> },
       { path: 'register', element: <RegisterPage /> },
       { path: 'app', element: <MainPage /> },
+      { path: 'property/create', element: <PropertyRegister /> },
     ],
   },
 ])
