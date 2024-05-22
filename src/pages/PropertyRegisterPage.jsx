@@ -22,7 +22,7 @@ const PropertyRegister = () => {
       <div className='absolute top-[104px] flex flex-col gap-2.5'>
         <p className='text-left text-3xl font-extrabold'>
           Cadastrando sua<br></br>
-          <span className='text-[#1a5d1a]'>propriedade...</span>
+          <span className='text-banap-dark'>propriedade...</span>
         </p>
         <p className='font-regular text-left text-base'>
           O primeiro passo a ser feito é cadastrar<br></br>sua propriedade...
@@ -41,12 +41,12 @@ const PropertyRegister = () => {
               placeholder='Insira o nome da propriedade'
               autoComplete='name'
               required
-              className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-[#1a5d1a] outline-none placeholder:text-[#1a5d1a]'
+              className='text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
             />
           </div>
           <button
             type='submit'
-            className='h-[38px] w-[243px] rounded-md bg-[#1ea81e] text-sm font-extrabold text-white'
+            className='bg-banap-light h-[38px] w-[243px] rounded-md text-sm font-extrabold text-white'
           >
             Cadastrar
           </button>

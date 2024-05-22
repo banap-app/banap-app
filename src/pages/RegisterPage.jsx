@@ -21,7 +21,7 @@ const RegisterPage = () => {
       </div>
       <div className='mt-[40px] flex w-[330px] flex-col items-start justify-center gap-2.5'>
         <p className='text-left text-[28px] font-extrabold'>
-          Olá, <span className='text-[#1ea81e]'>Produtor!</span>
+          Olá, <span className='text-banap-light'>Produtor!</span>
           <br></br>Antes de tudo...
         </p>
         <p className='text-regular text-left text-base'>
@@ -43,7 +43,7 @@ const RegisterPage = () => {
                 placeholder='Insira o seu nome'
                 autoComplete='name'
                 required
-                className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-[#1a5d1a] outline-none placeholder:text-[#1a5d1a]'
+                className='font-regular text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
               />
             </div>
             <div className='flex flex-col gap-2.5'>
@@ -57,7 +57,7 @@ const RegisterPage = () => {
                 placeholder='Insira o seu email'
                 autoComplete='email'
                 required
-                className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-[#1a5d1a] outline-none placeholder:text-[#1a5d1a]'
+                className='font-regular text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
               />
             </div>
             <div className='flex flex-col gap-2.5'>
@@ -71,13 +71,13 @@ const RegisterPage = () => {
                 placeholder='Insira a sua senha'
                 autoComplete='new-password'
                 required
-                className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-[#1a5d1a] outline-none placeholder:text-[#1a5d1a]'
+                className='font-regular text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
               />
             </div>
           </div>
           <button
             type='submit'
-            className='z-10 mt-[148px] h-[38px] w-[243px] rounded-md bg-[#1ea81e] text-sm font-extrabold text-white'
+            className='bg-banap-light z-10 mt-[148px] h-[38px] w-[243px] rounded-md text-sm font-extrabold text-white'
           >
             Cadastrar
           </button>

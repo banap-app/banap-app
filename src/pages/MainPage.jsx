@@ -6,7 +6,7 @@ const MainPage = () => {
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
       <div className='absolute top-[40px] flex w-[320px] flex-row items-center justify-between'>
         <p className='text-base font-bold'>
-          Olá, <span className='text-[#1ea81e]'>Gilmar</span>
+          Olá, <span className='text-banap-light'>Gilmar</span>
         </p>
         <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
       </div>
@@ -17,7 +17,7 @@ const MainPage = () => {
         <p className='text-center text-base font-bold text-[#8c8c8c]'>
           Ainda não há uma<br></br>propriedade cadastrada
         </p>
-        <button className='h-[56px] w-[220px] rounded-[10px] bg-[#1ea81e] text-base font-extrabold text-white'>
+        <button className='bg-banap-light h-[56px] w-[220px] rounded-[10px] text-base font-extrabold text-white'>
           <div className='flex items-center justify-between px-[15px]'>
             <Plus />
             Nova propriedade
