@@ -43,7 +43,7 @@ const RegisterPage = () => {
                 placeholder='Insira o seu nome'
                 autoComplete='name'
                 required
-                className='font-regular text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
+                className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
               />
             </div>
             <div className='flex flex-col gap-2.5'>
@@ -57,7 +57,7 @@ const RegisterPage = () => {
                 placeholder='Insira o seu email'
                 autoComplete='email'
                 required
-                className='font-regular text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
+                className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
               />
             </div>
             <div className='flex flex-col gap-2.5'>
@@ -71,13 +71,13 @@ const RegisterPage = () => {
                 placeholder='Insira a sua senha'
                 autoComplete='new-password'
                 required
-                className='font-regular text-banap-dark placeholder:text-banap-dark w-[330px] border-b border-black/30 pb-[5px] text-sm outline-none'
+                className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
               />
             </div>
           </div>
           <button
             type='submit'
-            className='bg-banap-light z-10 mt-[148px] h-[38px] w-[243px] rounded-md text-sm font-extrabold text-white'
+            className='z-10 mt-[148px] h-[38px] w-[243px] rounded-md bg-banap-light text-sm font-extrabold text-white'
           >
             Cadastrar
           </button>

@@ -32,10 +32,10 @@ const LoginPage = () => {
       </div>
       <div className='mt-[140px] flex flex-col items-center gap-10'>
         <div className='flex flex-col gap-10'>
-          <p className='text-banap-dark text-center text-[32px] font-extrabold'>
+          <p className='text-center text-[32px] font-extrabold text-banap-dark'>
             Banap
           </p>
-          <p className='font-regular text-banap-dark text-center text-xl'>
+          <p className='font-regular text-center text-xl text-banap-dark'>
             Entre com sua<br></br>conta!
           </p>
         </div>
@@ -53,7 +53,7 @@ const LoginPage = () => {
                   placeholder='Insira o seu email'
                   autoComplete='email'
                   required
-                  className='font-regular text-banap-dark placeholder:text-banap-dark/75 w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm outline-none'
+                  className='font-regular w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark/75'
                 />
               </div>
               <div className='flex flex-col gap-2.5'>
@@ -67,16 +67,16 @@ const LoginPage = () => {
                   placeholder='Insira a sua senha'
                   autoComplete='current-password'
                   required
-                  className='font-regular text-banap-dark placeholder:text-banap-dark/75 w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm outline-none'
+                  className='font-regular w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark/75'
                 />
               </div>
             </div>
-            <p className='text-banap-dark mt-[5px] text-right text-sm font-medium'>
+            <p className='mt-[5px] text-right text-sm font-medium text-banap-dark'>
               Esqueceu sua senha?
             </p>
             <button
               type='submit'
-              className='bg-banap-light mt-[15px] h-[38px] w-[243px] rounded-md text-sm font-extrabold text-white'
+              className='mt-[15px] h-[38px] w-[243px] rounded-md bg-banap-light text-sm font-extrabold text-white'
             >
               Entrar
             </button>

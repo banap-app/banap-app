@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import MainPage from './pages/MainPage.jsx'
 import PropertyRegister from './pages/PropertyRegisterPage.jsx'
+import Property from './pages/Property.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: 'register', element: <RegisterPage /> },
       { path: 'app', element: <MainPage /> },
       { path: 'property/create', element: <PropertyRegister /> },
+      { path: 'property', element: <Property /> },
     ],
   },
 ])

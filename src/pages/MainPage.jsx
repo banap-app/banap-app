@@ -17,10 +17,10 @@ const MainPage = () => {
         <p className='text-center text-base font-bold text-[#8c8c8c]'>
           Ainda não há uma<br></br>propriedade cadastrada
         </p>
-        <button className='bg-banap-light h-[56px] w-[220px] rounded-[10px] text-base font-extrabold text-white'>
+        <button className='h-[56px] w-[220px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
           <div className='flex items-center justify-between px-[15px]'>
             <Plus />
-            Nova propriedade
+            Nova Propriedade
           </div>
         </button>
       </div>
