@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import { UpperLines } from '../assets/RegistrationAssets'
+import { RegisterUpperLines } from '../assets/PagesAssets'
 
 const FieldRegisterPage2 = () => {
   const navigate = useNavigate()
@@ -15,7 +15,7 @@ const FieldRegisterPage2 = () => {
           <ArrowLeft />
         </div>
         <div className='absolute left-[5px] top-[17px]'>
-          <UpperLines />
+          <RegisterUpperLines />
         </div>
         <div className='absolute bottom-[60px] flex flex-col gap-[40px]'>
           <p className='text-3xl font-extrabold'>

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { UpperLines } from '../assets/RegistrationAssets'
+import { RegisterUpperLines } from '../assets/PagesAssets'
 import { ArrowLeft, Home, Plus } from 'lucide-react'
 
 const Property = () => {
@@ -7,7 +7,7 @@ const Property = () => {
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
       <div className='absolute left-[5px] top-[17px]'>
-        <UpperLines />
+        <RegisterUpperLines />
       </div>
       <div
         onClick={() => navigate(-1)}

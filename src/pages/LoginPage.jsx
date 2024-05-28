@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import {
-  UpperLines,
-  LowerLines,
-  UpperBubbles,
-  LowerBubbles,
-} from '../assets/LoginAssets'
+  LoginUpperLines,
+  LoginLowerLines,
+  LoginUpperBubbles,
+  LoginLowerBubbles,
+} from '../assets/PagesAssets'
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -13,16 +13,16 @@ const LoginPage = () => {
   return (
     <div className='relative flex h-full w-full flex-col items-center'>
       <div className='absolute right-0 top-[-4px]'>
-        <UpperLines />
+        <LoginUpperLines />
       </div>
       <div className='absolute bottom-0 left-0'>
-        <LowerLines />
+        <LoginLowerLines />
       </div>
       <div className='absolute right-[7px] top-[158px]'>
-        <UpperBubbles />
+        <LoginUpperBubbles />
       </div>
       <div className='absolute bottom-[222px] left-[46px]'>
-        <LowerBubbles />
+        <LoginLowerBubbles />
       </div>
       <div
         onClick={() => navigate(-1)}

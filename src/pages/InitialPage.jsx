@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom'
-import { Lines, Image } from '../assets/InitialPageAssets'
+import { InitialPageLines, InitialPageImage } from '../assets/PagesAssets'
 
 const InitialPage = () => {
   return (
     <div className='relative flex h-full w-full flex-col items-center'>
       <div className='absolute top-[315px] z-10'>
-        <Lines />
+        <InitialPageLines />
       </div>
       <div className='flex flex-col gap-[50px]'>
         <div className='mt-[85px] flex items-center justify-center'>
-          <Image />
+          <InitialPageImage />
         </div>
         <div className='z-20 flex flex-col items-center justify-center gap-[250px]'>
           <div className='flex flex-col gap-5'>

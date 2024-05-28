@@ -1,6 +1,6 @@
 import { ArrowLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { UpperLines, LowerLines } from '../assets/RegistrationAssets'
+import { RegisterUpperLines, RegisterLowerLines } from '../assets/PagesAssets'
 
 const RegisterPage = () => {
   const navigate = useNavigate()
@@ -8,10 +8,10 @@ const RegisterPage = () => {
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
       <div className='absolute left-[5px] top-[17px]'>
-        <UpperLines />
+        <RegisterUpperLines />
       </div>
       <div className='absolute bottom-[40px]'>
-        <LowerLines />
+        <RegisterLowerLines />
       </div>
       <div
         onClick={() => navigate(-1)}

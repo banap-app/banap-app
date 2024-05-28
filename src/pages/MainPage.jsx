@@ -1,4 +1,4 @@
-import { Lines } from '../assets/MainPageAssets'
+import { MainPageLines } from '../assets/PagesAssets'
 import { Plus } from 'lucide-react'
 
 const MainPage = () => {
@@ -11,7 +11,7 @@ const MainPage = () => {
         <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
       </div>
       <div className='absolute top-[105px] z-10'>
-        <Lines />
+        <MainPageLines />
       </div>
       <div className='flex flex-col gap-10'>
         <p className='text-center text-base font-bold text-[#8c8c8c]'>
