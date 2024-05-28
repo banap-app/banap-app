@@ -52,6 +52,10 @@ export default class User extends Entity {
     return this.#props[propName]
   }
 
+  set(propName, value) {
+    this.#props[propName] = value
+  }
+
   /**
    * Converte as propriedades do usuário em um dicionário.
    * @returns {object} Um dicionário contendo todas as propriedades do usuário.

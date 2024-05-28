@@ -83,14 +83,15 @@ export default class CreateUserUseCase extends UseCase {
       throw new Error('Data is not an instance of InputClass')
     }
 
-    if (await this.userRepository.findByEmail(data.email) !== null) {
+    const emails = await this.userRepository.findByEmail(data.email)
+    if (emails.length !== 0) {
       return new CreateUserUseCase.OutputClass(false, 'Email is being used')
     }
-    data.password = this.encryptionService.encrypt(data.password)
-
+    
+    data.passwordHash = await this.encryptionService.encrypt(data.password)
     const user = new User(data.name, data.password, data.email, '', true)
+    user.set('password', data.passwordHash)
     const output = await this.userRepository.save(user)
-    console.log(output)
     return new CreateUserUseCase.OutputClass(true, 'Success created user')
   }
 }
