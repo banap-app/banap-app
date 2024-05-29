@@ -13,6 +13,7 @@ import Property from './pages/Property.jsx'
 import FieldRegisterPage1 from './pages/FieldRegisterPage1.jsx'
 import FieldRegisterPage2 from './pages/FieldRegisterPage2.jsx'
 import FieldRegisterPage3 from './pages/FieldRegisterPage3.jsx'
+import FieldPage from './pages/FieldPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: 'field/register/1', element: <FieldRegisterPage1 /> },
       { path: 'field/register/2', element: <FieldRegisterPage2 /> },
       { path: 'field/register/3', element: <FieldRegisterPage3 /> },
+      { path: 'field', element: <FieldPage /> },
     ],
   },
 ])

@@ -41,7 +41,7 @@ const FieldRegisterPage3 = () => {
               text-sm text-banap-dark outline-none placeholder:text-banap-dark'
               ></textarea>
             </div>
-            <div className='gap-[306 px] flex w-[330px] flex-col items-center  justify-center'>
+            <div className='flex w-[330px] flex-col items-center justify-center  gap-[306px]'>
               <div className='flex flex-col gap-[15px]'>
                 <label className='text-2xl font-medium'>Cultura</label>
                 <select
@@ -49,14 +49,19 @@ const FieldRegisterPage3 = () => {
                   id=''
                   className='h-[30px] w-[330px] rounded-[8px] bg-banap-light px-[8px] text-sm font-bold text-white outline-none'
                 >
-                  <option value=''>banana</option>
+                  <option value='' className='bg-white text-black'>
+                    Banana Prata
+                  </option>
+                  <option value='' className='bg-white text-black'>
+                    Banana da Terra
+                  </option>
                 </select>
               </div>
               <button
                 type='submit'
                 className='h-[38px] w-[243px] rounded-md bg-banap-light text-sm font-extrabold text-white'
               >
-                Continuar
+                Cadastrar
               </button>
             </div>
           </div>
