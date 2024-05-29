@@ -19,6 +19,13 @@ export default class Auth extends Entity {
     if (typeof token !== 'string') {
       throw new TypeError('token must be a string')
     }
+    if (!refreshToken) {
+      throw new DomainException('RefreshToken is required')
+    }
+
+    if (typeof refreshToken !== 'string') {
+      throw new TypeError('refreshToken must be a string')
+    }
   }
 
   to_dict () {

@@ -52,7 +52,7 @@ export default class User extends Entity {
     return this.#props[propName]
   }
 
-  set(propName, value) {
+  set (propName, value) {
     this.#props[propName] = value
   }
 
@@ -94,7 +94,7 @@ export default class User extends Entity {
     }
 
     if (!validateUuid(this.get('id'))) {
-      throw new Error('ID must be a valid UUID')
+      throw new TypeException('ID must be a valid UUID')
     }
     if (typeof this.get('active') !== 'boolean') {
       throw new TypeException('Active must be a boolean')

@@ -87,7 +87,7 @@ export default class CreateUserUseCase extends UseCase {
     if (emails.length !== 0) {
       return new CreateUserUseCase.OutputClass(false, 'Email is being used')
     }
-    
+
     data.passwordHash = await this.encryptionService.encrypt(data.password)
     const user = new User(data.name, data.password, data.email, '', true)
     user.set('password', data.passwordHash)

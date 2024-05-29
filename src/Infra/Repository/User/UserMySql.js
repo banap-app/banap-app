@@ -5,7 +5,7 @@ import Email from '../../../Domain/ValueObject/Email.js'
 import mysql from 'mysql2/promise'
 
 // Create the connection to database
-export class UserMySql extends UserRepository {
+export default class UserMySql extends UserRepository {
   async createConnection () {
     return await mysql.createConnection({
       host: 'localhost',
