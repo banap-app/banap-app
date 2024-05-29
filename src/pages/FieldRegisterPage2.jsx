@@ -15,7 +15,7 @@ const FieldRegisterPage2 = () => {
           <ArrowLeft />
         </div>
         <div className='absolute left-[5px] top-[17px]'>
-          <RegisterUpperLines />
+          <UpperLines />
         </div>
         <div className='absolute bottom-[60px] flex flex-col gap-[40px]'>
           <p className='text-3xl font-extrabold'>
