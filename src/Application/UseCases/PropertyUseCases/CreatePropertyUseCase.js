@@ -34,13 +34,14 @@ export default class CreatePropertyUseCase extends UseCase {
     }
   }
 
-  execute (data) {
+  async execute (data) {
     if (!(data instanceof CreatePropertyUseCase.InputClass)) {
       throw new TypeException('Data is not an instance of InputClass')
     }
     const property = new Property('', data.owner, data.name)
     try {
-      const output = this.propertyRepository.save(property)
+      console.log('saving')
+      const output = await this.propertyRepository.save(property)
       return new CreatePropertyUseCase.OutputClass(true, 'Property created successfully')
     } catch (e) {
       return new CreatePropertyUseCase.OutputClass(false, 'Error')

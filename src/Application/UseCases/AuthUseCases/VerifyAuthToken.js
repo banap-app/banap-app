@@ -2,7 +2,6 @@ import Auth from '../../../Domain/Entities/Auth.js'
 import UseCase from '../../../__seedwork/Application/UseCase.js'
 import TypeException from '../../../__seedwork/Domain/Exceptions/TypeException.js'
 import AuthTokenService from '../../Adapters/AuthTokenService.js'
-import pkg from 'jsonwebtoken'
 
 export default class VerifyAuthToken extends UseCase {
   constructor(tokenService) {

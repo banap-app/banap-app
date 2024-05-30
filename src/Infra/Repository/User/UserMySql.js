@@ -3,33 +3,33 @@ import Email from '../../../Domain/ValueObject/Email.js'
 
 // Get the client
 import mysql from 'mysql2/promise'
+import MySqlConnection from '../../Database/MySqlConnection.js'
 
 // Create the connection to database
 export default class UserMySql extends UserRepository {
   async createConnection () {
-    return await mysql.createConnection({
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'test'
-    })
+    return await MySqlConnection.connect()
+  }
+
+  async closeConnection () {
+    return await MySqlConnection.disconnect()
   }
 
   async save (user) {
     super.save(user)
-    console.log('Fazendo consulta')
     const connection = await this.createConnection()
     try {
-      console.log(user.get('password'))
-      const [results, fields] = await connection.execute(
-        'INSERT INTO users (uuid, name_user, password_user,email ,created_at, active) VALUES (?,?,?,?,?,?)',
+      const sql = 'INSERT INTO users (uuid, name_user, password_user,email ,created_at, active) VALUES (?,?,?,?,?,?)'
+      await connection.execute(
+        sql,
         [user.get('id'), user.get('name'), user.get('password'), user.get('email'), user.get('created_at'), user.get('active')]
       )
-
-      console.log(results) // results contains rows returned by server
-      console.log(fields) // fields contains extra meta data about results, if available
+      await this.closeConnection()
+      return true
     } catch (err) {
       console.log(err)
+      await this.closeConnection()
+      return false
     }
   }
 
@@ -41,9 +41,10 @@ export default class UserMySql extends UserRepository {
     super.findByEmail(email)
     const connection = await this.createConnection()
     const [results, fields] = await connection.execute(
-        'SELECT * FROM users WHERE `email` = ?',
-        [email]
-      )
+      'SELECT * FROM users WHERE `email` = ?',
+      [email]
+    )
+    await this.closeConnection()
     return results
   }
 }

@@ -4,6 +4,10 @@ import PropertyRepository from '../../../Domain/Repositories/PropertyRepositorie
 import { connect } from 'mongoose'
 
 const PropertySchema = new Schema({
+  fields: [{
+    type: String,
+    ref: 'field'
+  }],
   name: {
     type: String,
     required: true
@@ -15,11 +19,11 @@ const PropertySchema = new Schema({
   _id: {
     type: String,
     default: function genUUID() {
-      return uuidv4();
+      return uuidv4()
     }}
-})
+}, { timestamps: true })
 
-const PropertyModel = model('property', PropertySchema)
+export const PropertyModel = model('property', PropertySchema)
 
 export default class PropertyMongo extends PropertyRepository {
   async createConnection () {

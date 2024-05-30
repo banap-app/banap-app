@@ -8,20 +8,20 @@ export default class Analysis extends Entity {
 
   constructor (
     id,
+    idField,
     desiredBaseSaturation,
     currentBaseSaturation,
     totalCationExchangeCapacity,
-    relativeTotalNeutralizingPower,
-    fieldOfAnalysis
+    relativeTotalNeutralizingPower
   ) {
     super()
     this.#props = {
       id: id ? id : v4(),
+      idField,
       desiredBaseSaturation,
       currentBaseSaturation,
       totalCationExchangeCapacity,
-      relativeTotalNeutralizingPower,
-      fieldOfAnalysis
+      relativeTotalNeutralizingPower
     }
     this.validate()
   }
@@ -43,23 +43,21 @@ export default class Analysis extends Entity {
     return super.to_dict(this.#props)
   }
 
-  
-
   validate () {
     const propsVerifyNumber = ['desiredBaseSaturation', 'currentBaseSaturation', 'totalCationExchangeCapacity', 'relativeTotalNeutralizingPower']
 
     propsVerifyNumber.forEach((prop) => {
-      if (typeof this.#props[prop] !== 'number') {
+      if (typeof this.get(prop) !== 'number') {
         throw new TypeException(`${prop} must be a number`)
       }
     })
 
-    if (typeof this.#props.fieldOfAnalysis !== 'string') {
-      throw new TypeException('FieldOfAnalysis must be a string')
+    if (!validateUuid(this.get('id'))) {
+      throw new TypeException('ID must be a valid ID')
     }
 
-    if (!validateUuid(this.#props.fieldOfAnalysis)) {
-      throw new TypeException('FieldOfAnalysis must be a valid uuid')
+    if (!validateUuid(this.get('idField'))) {
+      throw new TypeException('idField must be a valid ID')
     }
   }
 }
