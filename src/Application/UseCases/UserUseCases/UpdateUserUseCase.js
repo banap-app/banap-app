@@ -1,7 +1,7 @@
 import User from '../../../Domain/Entities/User.js'
 import UserRepository from '../../../Domain/Repositories/UserRepositories/UserRepository.js'
-import UseCase from '../../__seedwork/Application/UseCase.js'
-import EncryptionService from '../Adapters/EncryptionService.js'
+import UseCase from '../../../__seedwork/Application/UseCase.js'
+import EncryptionService from '../../Adapters/EncryptionService.js'
 
 /**
  * Classe UpdateUserUseCase

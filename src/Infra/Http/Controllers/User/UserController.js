@@ -1,3 +1,4 @@
+import CreateUserUseCase from '../../../../Application/UseCases/UserUseCases/CreateUserUseCase.js'
 import UseCase from '../../../../__seedwork/Application/UseCase.js'
 import Controller from '../../../../__seedwork/Infra/Controller.js'
 
@@ -30,12 +31,22 @@ export default class UserController extends Controller {
     this.useCaseUpdate = useCaseUpdate
   }
 
+  async handle (httpRequest) {
+    switch (httpRequest.method) {
+      case 'POST':
+        return this.create(httpRequest.body)
+      default:
+        throw new Error(`Method ${httpRequest.method} is not allowed`)
+    }
+  }
+
   create (data) {
     if (!data) {
       throw new Error('data is required')
     }
 
-    const output = this.useCaseCreate.execute(data)
+    const input = new CreateUserUseCase.InputClass(data)
+    const output = this.useCaseCreate.execute(input)
 
     return output
   }

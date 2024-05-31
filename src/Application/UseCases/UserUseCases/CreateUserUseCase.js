@@ -84,6 +84,7 @@ export default class CreateUserUseCase extends UseCase {
     }
 
     const emails = await this.userRepository.findByEmail(data.email)
+
     if (emails.length !== 0) {
       return new CreateUserUseCase.OutputClass(false, 'Email is being used')
     }
