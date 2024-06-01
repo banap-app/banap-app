@@ -27,7 +27,7 @@ export default class UserRepository extends Abstract {
       throw new DomainException('Must be a User')
     }
     // Lógica para salvar o usuário
-    return user
+    return Boolean()
   }
 
   /**
@@ -47,7 +47,7 @@ export default class UserRepository extends Abstract {
       throw new DomainException('Must be a User')
     }
     // Lógica para atualizar o usuário
-    return user
+    return Boolean()
   }
 
   /**
@@ -66,5 +66,19 @@ export default class UserRepository extends Abstract {
       throw new DomainException('Email must be a string')
     }
     // Lógica para buscar o usuário pelo e-mail
+  }
+
+  findById (id) {
+    if (typeof id !== 'string') {
+      throw new DomainException('Id must be a string')
+    }
+  }
+
+  delete (id) {
+    if (typeof id !== 'string') {
+      throw new DomainException('Id must be a string')
+    }
+
+    return Boolean()
   }
 }

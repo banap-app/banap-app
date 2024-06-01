@@ -47,6 +47,8 @@ export default class UpdateUserUseCase extends UseCase {
      * @param {string} data.password Senha do usuário.
      */
     constructor (data) {
+      this.id = data.id
+      this.active = data.active
       this.name = data.name
       this.email = data.email
       this.password = data.password
@@ -90,19 +92,28 @@ export default class UpdateUserUseCase extends UseCase {
       throw new Error('Data is not an instance of InputClass')
     }
 
-    if (this.userRepository.findByEmail(data.email)) {
-      return new UpdateUserUseCase.OutputClass(false, 'Email is being used')
+    const email = await this.userRepository.findByEmail(data.email)
+
+    if (email.length === 0) {
+      return new UpdateUserUseCase.OutputClass(false, 'Email not found')
     }
 
-    const userRepository = await this.userRepository.find(data.id)
+    const userRepository = await this.userRepository.findById(data.id)
 
     if (!userRepository) {
-      throw new Error('User not found')
+      return new UpdateUserUseCase.OutputClass(false, 'User not found')
     }
 
-    const user = new User(data.name, data.password, data.email, '', true)
-    this.userRepository.save(user)
+    try {
+      const passwordhash = await this.encryptionService.encrypt(data.password)
 
-    return new UpdateUserUseCase.OutputClass(true, 'User updated successfully')
+      const user = new User(data.name, data.password, data.email, data.id, data.active)
+      user.set('password', passwordhash)
+      this.userRepository.update(user)
+
+      return new UpdateUserUseCase.OutputClass(true, 'User updated successfully')
+    } catch (e) {
+      return new UpdateUserUseCase.OutputClass(false, 'Error updating user')
+    }
   }
 }

@@ -36,7 +36,7 @@ export default class DeleteUserUseCase extends UseCase {
      * @param {Object} data Objeto contendo os dados do usuário.
      * @param {string} data.id ID do usuário.
      */
-    constructor ({ id }) {
+    constructor (id) {
       this.id = id
     }
   }

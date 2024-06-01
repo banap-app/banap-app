@@ -12,7 +12,7 @@ export default class Field extends Entity {
     idProperty,
     name,
     photo,
-    owner,
+    ownerId,
     description,
     cultureOfPlants,
     firstCoordinate,
@@ -26,7 +26,7 @@ export default class Field extends Entity {
       idProperty,
       name,
       photo,
-      owner,
+      ownerId,
       description,
       cultureOfPlants,
       firstCoordinate,
@@ -52,13 +52,17 @@ export default class Field extends Entity {
     }
 
     if (!validateUuid(this.get('idProperty'))) {
-      throw new DomainException('ID must be a valid UUID')
+      throw new DomainException('Property ID must be a valid UUID')
+    }
+
+    if (!validateUuid(this.get('ownerId'))) {
+      throw new DomainException('Owner ID must be a valid UUID')
     }
 
     const propsVerifyString = [
       'name',
       'photo',
-      'owner',
+      'ownerId',
       'description',
       'cultureOfPlants'
     ]
@@ -104,7 +108,7 @@ export default class Field extends Entity {
     )
 
     const coordinatesWithoutRepeats = coordinatesVerify.filter(
-      (elemento, indice) => coordinatesVerify.indexOf(elemento) === indice
+      (element, index) => coordinatesVerify.indexOf(element) === index
     )
 
     if (coordinatesWithoutRepeats.length !== coordinatesVerify.length) {

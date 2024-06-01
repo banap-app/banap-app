@@ -47,9 +47,11 @@ export default class CreateUserUseCase extends UseCase {
      * @param {string} data.password Senha do usuário.
      */
     constructor (data) {
+      this.id = data.id
       this.name = data.name
       this.email = data.email
       this.password = data.password
+      this.active = data.active
     }
   }
 
@@ -90,7 +92,7 @@ export default class CreateUserUseCase extends UseCase {
     }
 
     data.passwordHash = await this.encryptionService.encrypt(data.password)
-    const user = new User(data.name, data.password, data.email, '', true)
+    const user = new User(data.name, data.password, data.email, data.id, data.active)
     user.set('password', data.passwordHash)
     const output = await this.userRepository.save(user)
     return new CreateUserUseCase.OutputClass(true, 'Success created user')

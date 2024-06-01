@@ -31,6 +31,20 @@ export default class GenerateAuthToken extends UseCase {
     }
   }
 
+  static OutputClass = class {
+    constructor (success, message, token) {
+      if (typeof success!== 'boolean') {
+        throw new TypeException('success must be a boolean')
+      }
+      if (typeof message!== 'string') {
+        throw new TypeException('message must be a string')
+      }
+      this.success = success
+      this.message = message
+      this.token = token
+    }
+  }
+
   execute (payload) {
     if (!(payload instanceof GenerateAuthToken.InputClass)) {
       throw new TypeException(
@@ -40,6 +54,6 @@ export default class GenerateAuthToken extends UseCase {
     const auth = new Auth(payload.userId, payload.userId)
     const token = this.tokenService.generateToken(auth.get('token'))
 
-    return token
+    return new GenerateAuthToken.OutputClass(true, 'Success in authenticating', token)
   }
 }

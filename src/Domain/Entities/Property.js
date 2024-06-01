@@ -6,12 +6,12 @@ import { v4, validate as validateUuid } from 'uuid'
 export default class Property extends Entity {
   #props
 
-  constructor (id, owner, name) {
+  constructor (id, ownerId, name) {
     super()
     this.#props = {
       id: id ? id : v4(),
       name,
-      owner,
+      ownerId,
       created_at: new Date().toISOString()
     }
     this.validate()
@@ -30,14 +30,20 @@ export default class Property extends Entity {
   }
 
   validate () {
-    const propsString = ['name', 'owner', 'id']
+    const propsString = ['name', 'ownerId', 'id']
+
     for (const propName in propsString) {
       if (typeof this.get(propsString[propName]) !== 'string') {
         throw new TypeException(`${propsString[propName]} must be a string`)
       }
     }
+  
     if (!validateUuid(this.get('id'))) {
       throw new TypeException('ID must be a valid UUID')
+    }
+
+    if (!validateUuid(this.get('ownerId'))) {
+      throw new TypeException('Owner ID must be a valid UUID')
     }
     DomainValidator.str_validate_length(this.get('name'), 40)
   }

@@ -47,4 +47,26 @@ export default class UserMySql extends UserRepository {
     await this.closeConnection()
     return results
   }
+
+  async findById (id) {
+    super.findById(id)
+    const connection = await this.createConnection()
+    const [results, fields] = await connection.execute(
+      'SELECT * FROM users WHERE `id` =?',
+      [id]
+    )
+    await this.closeConnection()
+    return results
+  }
+
+  async delete (id) {
+    super.delete(id)
+    const connection = await this.createConnection()
+    const [results, fields] = await connection.execute(
+      'DELETE FROM users WHERE `id` =?',
+      [id]
+    )
+    await this.closeConnection()
+    return results
+  }
 }
