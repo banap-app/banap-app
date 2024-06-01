@@ -15,6 +15,7 @@ import FieldRegisterPage2 from './pages/FieldRegisterPage2.jsx'
 import FieldRegisterPage3 from './pages/FieldRegisterPage3.jsx'
 import FieldPage from './pages/FieldPage.jsx'
 import LimingCalcPage from './pages/LimingCalcPage.jsx'
+import LimingResultPage from './pages/LimingResultPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
       { path: 'field/register/3', element: <FieldRegisterPage3 /> },
       { path: 'field', element: <FieldPage /> },
       { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
+      { path: 'analysis/liming/result', element: <LimingResultPage /> },
     ],
   },
 ])
