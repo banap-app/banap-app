@@ -1,8 +1,4 @@
 import UserRepository from '../../../Domain/Repositories/UserRepositories/UserRepository.js'
-import Email from '../../../Domain/ValueObject/Email.js'
-
-// Get the client
-import mysql from 'mysql2/promise'
 import MySqlConnection from '../../Database/MySqlConnection.js'
 
 // Create the connection to database

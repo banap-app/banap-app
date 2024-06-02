@@ -4,7 +4,7 @@ const { sign, verify } = pkg
 
 export default class JwtService extends AuthTokenService {
   generateToken (payload) {
-    return sign({ payload }, 'project', { expiresIn: '1m' })
+    return sign({ payload }, 'project', { expiresIn: '10m' })
   }
 
   verifyToken (payload) {

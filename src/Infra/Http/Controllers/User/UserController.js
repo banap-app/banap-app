@@ -1,3 +1,4 @@
+import LoginUserUseCase from '../../../../Application/UseCases/UserUseCases/LoginUserUseCase.js'
 import CreateUserUseCase from '../../../../Application/UseCases/UserUseCases/CreateUserUseCase.js'
 import UseCase from '../../../../__seedwork/Application/UseCase.js'
 import Controller from '../../../../__seedwork/Infra/Controller.js'
@@ -21,7 +22,12 @@ export default class UserController extends Controller {
       throw new Error('useCaseUpdate is required')
     }
 
-    if (!(useCaseCreate instanceof UseCase) || !(useCaseDelete instanceof UseCase) || !(useCaseLogin instanceof UseCase) || !(useCaseUpdate instanceof UseCase)) {
+    if (
+      !(useCaseCreate instanceof UseCase) ||
+      !(useCaseDelete instanceof UseCase) ||
+      !(useCaseLogin instanceof UseCase) ||
+      !(useCaseUpdate instanceof UseCase)
+    ) {
       throw new Error('useCase must be an instance of UseCase')
     }
 
@@ -34,7 +40,16 @@ export default class UserController extends Controller {
   async handle (httpRequest) {
     switch (httpRequest.method) {
       case 'POST':
-        return this.create(httpRequest.body)
+        switch (httpRequest.path) {
+          case '/create':
+            return this.create(httpRequest.body)
+          case '/login':
+            return this.login(httpRequest.body)
+          default:
+            throw new Error(
+              `Path ${httpRequest.path} is not allowed for method POST`
+            )
+        }
       default:
         throw new Error(`Method ${httpRequest.method} is not allowed`)
     }
@@ -48,6 +63,15 @@ export default class UserController extends Controller {
     const input = new CreateUserUseCase.InputClass(data)
     const output = this.useCaseCreate.execute(input)
 
+    return output
+  }
+
+  async login (data) {
+    if (!data) {
+      throw new Error('data is required')
+    }
+    const input = new LoginUserUseCase.InputClass(data)
+    const output = await this.useCaseLogin.execute(input)
     return output
   }
 }

@@ -22,10 +22,20 @@ export default class AuthController extends Controller {
     this.verifyAuthToken = verifyAuthToken
   }
 
-  async handle (httpRequest) {
+  async handle (req, res, next) {
+    return null
+  }
+
+  async verifyToken (httpRequest) {
     const payload = new VerifyAuthToken.InputClass(
-      httpRequest.headers['authorization']
+      httpRequest.headers.authorization
     )
+    const result = await this.verifyAuthToken.execute(payload)
+    return result
+  }
+
+  async generateToken (httpRequest) {
+    const payload = new GenerateAuthToken.InputClass(httpRequest.body.userId)
     const result = await this.generateAuthToken.execute(payload)
     return result
   }

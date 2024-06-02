@@ -35,8 +35,8 @@ export default class PropertyMongo extends PropertyRepository {
     super.save(property)
     const propertyPersistent = new PropertyModel({
       name: property.get('name'),
-      owner: property.get('owner'),
-      id: property.get('id')
+      owner: property.get('ownerId'),
+      _id: property.get('id')
     })
     propertyPersistent.save()
   }

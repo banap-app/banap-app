@@ -4,7 +4,7 @@ import Property from '../../../Domain/Entities/Property.js'
 import PropertyRepository from '../../../Domain/Repositories/PropertyRepositories/PropertyRepository.js'
 
 export default class CreatePropertyUseCase extends UseCase {
-  constructor(propertyRepository) {
+  constructor (propertyRepository) {
     super()
     if (!(propertyRepository instanceof PropertyRepository)) {
       throw new TypeException(

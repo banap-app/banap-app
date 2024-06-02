@@ -4,7 +4,7 @@ import TypeException from '../../../__seedwork/Domain/Exceptions/TypeException.j
 import AuthTokenService from '../../Adapters/AuthTokenService.js'
 
 export default class VerifyAuthToken extends UseCase {
-  constructor(tokenService) {
+  constructor (tokenService) {
     super()
     if (!tokenService) {
       throw new Error('tokenService is required')
@@ -28,9 +28,10 @@ export default class VerifyAuthToken extends UseCase {
   }
 
   static OutputClass = class {
-    constructor (isValidToken, message) {
+    constructor (isValidToken, message, payloadDecoded) {
       this.isValidToken = isValidToken
       this.message = message
+      this.payloadDecoded = payloadDecoded
     }
   }
 
@@ -44,9 +45,9 @@ export default class VerifyAuthToken extends UseCase {
     const auth = new Auth(payload.token, payload.token)
     try {
       const isValidToken = await this.tokenService.verifyToken(auth.get('token')).payload
-      return new VerifyAuthToken.OutputClass(true, isValidToken)
+      return new VerifyAuthToken.OutputClass(true, 'Success in validate', isValidToken)
     } catch (e) {
-      return new VerifyAuthToken.OutputClass(false, "Need login again")
+      return new VerifyAuthToken.OutputClass(false, 'Need login again', '')
     }
   }
 }

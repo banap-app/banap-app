@@ -65,10 +65,14 @@ export default class LoginUserUseCase extends UseCase {
      * @param {string} data.message Mensagem de erro ou sucesso.
      * @param {Object} data.user Objeto do usuário autenticado.
      */
-    constructor (data) {
-      this.success = data.success
-      this.message = data.message
-      this.user = data.user
+    constructor (success, message, userId, nameUser, email, createdAt, active) {
+      this.success = success
+      this.message = message
+      this.userId = userId
+      this.nameUser = nameUser
+      this.email = email
+      this.createdAt = createdAt
+      this.active = active
     }
   }
 
@@ -93,22 +97,26 @@ export default class LoginUserUseCase extends UseCase {
 
     const user = await this.userRepository.findByEmail(data.email)
 
-    if (!user) {
+    if (user.length === 0) {
       return new LoginUserUseCase.OutputClass(false, 'Email not found')
     }
 
-    if (!user.active) {
+    if (!user[0].active) {
       return new LoginUserUseCase.OutputClass(false, 'User not active')
     }
 
-    if (this.encryptionService.verifyPasswords(user.password, data.password)) {
+    if (!await this.encryptionService.verifyPasswords(user[0].password_user, data.password)) {
       return new LoginUserUseCase.OutputClass(false, 'Password incorrect')
     }
 
     return new LoginUserUseCase.OutputClass(
       true,
       'Login successful',
-      user
+      user[0].uuid,
+      user[0].name_user,
+      user[0].email,
+      user[0].created_at,
+      user[0].active
     )
   }
 }

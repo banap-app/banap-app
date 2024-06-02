@@ -33,10 +33,10 @@ export default class GenerateAuthToken extends UseCase {
 
   static OutputClass = class {
     constructor (success, message, token) {
-      if (typeof success!== 'boolean') {
+      if (typeof success !== 'boolean') {
         throw new TypeException('success must be a boolean')
       }
-      if (typeof message!== 'string') {
+      if (typeof message !== 'string') {
         throw new TypeException('message must be a string')
       }
       this.success = success
