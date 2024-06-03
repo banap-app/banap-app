@@ -53,7 +53,7 @@ export default class CreateFieldUseCase extends UseCase {
       throw new TypeException('Data is not an instance of InputClass')
     }
 
-    const field = new Field(data.id,data.idProperty, data.name, data.photo, data.owner, data.description, data.cultureOfPlants, data.firstCoordinate, data.secondCoordinate, data.thirdCoordinate, data.fourthCoordinate)
+    const field = new Field(data.id, data.idProperty, data.name, data.photo, data.owner, data.description, data.cultureOfPlants, data.firstCoordinate, data.secondCoordinate, data.thirdCoordinate, data.fourthCoordinate)
 
     try {
       const output = await this.fieldRepository.save(field)

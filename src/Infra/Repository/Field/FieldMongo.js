@@ -68,7 +68,7 @@ export default class FieldMongo extends FieldRepository {
       idProperty: field.get('idProperty'),
       name: field.get('name'),
       photo: field.get('photo'),
-      owner: field.get('owner'),
+      owner: field.get('ownerId'),
       description: field.get('description'),
       cultureOfPlants: field.get('cultureOfPlants'),
       firstCoordinate: field.get('firstCoordinate'),
@@ -85,8 +85,10 @@ export default class FieldMongo extends FieldRepository {
     /* await session.commitTransaction() */
   }
 
-  delete (field) {
+  async delete (field) {
+    await this.createConnection()
     super.delete(field)
+    await FieldModel.findByIdAndDelete(field.get('id'))
   }
 
   findByUserId (id) {
