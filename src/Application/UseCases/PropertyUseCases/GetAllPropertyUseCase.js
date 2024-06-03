@@ -2,8 +2,8 @@ import PropertyRepository from '../../../Domain/Repositories/PropertyRepositorie
 import UseCase from '../../../__seedwork/Application/UseCase.js'
 import TypeException from '../../../__seedwork/Domain/Exceptions/TypeException.js'
 
-export default class GetPropertyUseCase extends UseCase {
-  constructor(propertyRepository) {
+export default class GetAllPropertyUseCase extends UseCase {
+  constructor (propertyRepository) {
     super()
     if (!(propertyRepository instanceof PropertyRepository)) {
       throw new TypeException(
@@ -14,8 +14,12 @@ export default class GetPropertyUseCase extends UseCase {
   }
 
   static InputClass = class {
-    constructor(id) {
-      this.id = id
+    constructor (ownerId) {
+      if (typeof ownerId !== 'string') {
+        throw new TypeException('ownerId must be a string')
+      }
+
+      this.ownerId = ownerId
     }
   }
 
@@ -33,15 +37,17 @@ export default class GetPropertyUseCase extends UseCase {
     }
   }
 
-  async execute(data) {
-    if (!(data instanceof GetPropertyUseCase.InputClass)) {
+  async execute (data) {
+    if (!(data instanceof GetAllPropertyUseCase.InputClass)) {
       throw new TypeException('Data is not an instance of InputClass')
     }
-    try {
-      const property = await this.propertyRepository.findByPropertyId(data.id)
-      return new GetPropertyUseCase.OutputClass(true, 'Property found', property)
-    } catch (e) {
-      return new GetPropertyUseCase.OutputClass(false, 'Property not found', '')
+    const property = await this.propertyRepository.findByIdUser(data.ownerId)
+    console.log(property)
+
+    if (!property) {
+      return new GetAllPropertyUseCase.OutputClass(false, 'Property not found', property)
     }
+
+    return new GetAllPropertyUseCase.OutputClass(true, 'Property found', property)
   }
 }

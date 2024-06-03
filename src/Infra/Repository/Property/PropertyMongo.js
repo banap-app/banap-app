@@ -27,7 +27,8 @@ export const PropertyModel = model('property', PropertySchema)
 
 export default class PropertyMongo extends PropertyRepository {
   async createConnection () {
-    await connect('mongodb://127.0.0.1:27017/geeksforgeeks')
+    await connect('mongodb://127.0.0.1:27017/geeksforgeeks', {
+    })
   }
 
   async save (property) {
@@ -41,15 +42,26 @@ export default class PropertyMongo extends PropertyRepository {
     propertyPersistent.save()
   }
 
-  delete (property) {
+  async delete (property) {
     super.delete(property)
   }
 
-  findByIdUser(id) {
-    super.findByIdUser(id)
+  async findByIdUser (idOwner) {
+    await this.createConnection()
+    super.findByIdUser(idOwner)
+    console.log(idOwner)
+    const property = await PropertyModel.find({ owner: idOwner })
+    return property
   }
 
-  update(property) {
+  async findByPropertyId (idProperty) {
+    await this.createConnection()
+    super.findByPropertyId(idProperty)
+    const property = await PropertyModel.findById(idProperty)
+    return property
+  }
+
+  async update (property) {
     super.update(property)
   }
 }

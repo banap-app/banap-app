@@ -1,7 +1,7 @@
 import Abstract from '../../../__seedwork/Abstract.js'
 import Property from '../../Entities/Property.js'
 import DomainException from '../../Exceptions/DomainException.js'
-import { validate as validadeUUID } from 'uuid'
+import { validate as validateUUID } from 'uuid'
 
 export default class PropertyRepository extends Abstract {
   save (property) {
@@ -17,9 +17,17 @@ export default class PropertyRepository extends Abstract {
   }
 
   findByIdUser (id) {
-    if (!validadeUUID(id)) {
+    if (!validateUUID(id)) {
       throw new DomainException('Must be a valid ID')
     }
+    return id
+  }
+
+  findByPropertyId (propertyId) {
+    if (!validateUUID(propertyId)) {
+      throw new DomainException('Must be a valid ID')
+    }
+    return propertyId
   }
 
   update (property) {

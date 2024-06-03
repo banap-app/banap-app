@@ -40,7 +40,6 @@ export default class CreatePropertyUseCase extends UseCase {
     }
     const property = new Property('', data.owner, data.name)
     try {
-      console.log('saving')
       const output = await this.propertyRepository.save(property)
       return new CreatePropertyUseCase.OutputClass(true, 'Property created successfully')
     } catch (e) {

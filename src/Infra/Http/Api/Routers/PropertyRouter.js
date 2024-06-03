@@ -39,17 +39,38 @@ export default class PropertyRouter {
     )
 
     this.router.get(
-      '/get/:id',
+      '/allProperties',
       this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware),
       async (req, res) => {
         try {
           const httpRequest = new HttpRequest(req)
           const result = await this.propertyController.handle(
-            httpRequest.params.id
+            httpRequest
+          )
+
+          if (!result.success) {
+            return res.status(404).json(result)
+          }
+
+          return res.status(200).json(result)
+        } catch (error) {}
+      }
+    )
+
+    this.router.get(
+      '/getProperty/:propertyId',
+      this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware),
+      async (req, res) => {
+        try {
+          const httpRequest = new HttpRequest(req)
+          httpRequest.path = '/getProperty'
+          const result = await this.propertyController.handle(
+            httpRequest
           )
           if (!result.success) {
             return res.status(404).json(result)
           }
+          return res.status(200).json(result)
         } catch (error) {}
       }
     )
