@@ -15,7 +15,6 @@ export default class CreateFieldUseCase extends UseCase {
 
   static InputClass = class {
     constructor (
-      id,
       idProperty,
       name,
       photo,
@@ -27,7 +26,6 @@ export default class CreateFieldUseCase extends UseCase {
       thirdCoordinate,
       fourthCoordinate
     ) {
-      this.id = id
       this.idProperty = idProperty
       this.name = name
       this.photo = photo
@@ -52,8 +50,7 @@ export default class CreateFieldUseCase extends UseCase {
     if (!(data instanceof CreateFieldUseCase.InputClass)) {
       throw new TypeException('Data is not an instance of InputClass')
     }
-
-    const field = new Field(data.id, data.idProperty, data.name, data.photo, data.owner, data.description, data.cultureOfPlants, data.firstCoordinate, data.secondCoordinate, data.thirdCoordinate, data.fourthCoordinate)
+    const field = new Field('', data.idProperty, data.name, data.photo, data.owner, data.description, data.cultureOfPlants, data.firstCoordinate, data.secondCoordinate, data.thirdCoordinate, data.fourthCoordinate)
 
     try {
       const output = await this.fieldRepository.save(field)

@@ -6,7 +6,7 @@
 // const output = gen.execute(input)
 // const input_ = new VerifyAuthToken.InputClass("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYWQ4ZTVjZTktZGViMi00ZGJhLWFiN2EtMTA1NDA3ODVlNzJiIiwiaWF0IjoxNzE2OTQ2OTcwLCJleHAiOjE3MTY5NDcwMzB9.REciNCBrQ-GRL5w5Xpcf9BtFdQPEXV6YxgOinh8Sv0g")
 // const output_ = await verify.execute(input_)
-import express from 'express'
+/* import express from 'express'
 import CreateUserUseCase from "./src/Application/UseCases/UserUseCases/CreateUserUseCase.js";
 import DeleteUserUseCase from "./src/Application/UseCases/UserUseCases/DeleteUserUseCase.js";
 import LoginUserUseCase from "./src/Application/UseCases/UserUseCases/LoginUserUseCase.js";
@@ -14,7 +14,7 @@ import UpdateUserUseCase from "./src/Application/UseCases/UserUseCases/UpdateUse
 import BcryptService from "./src/Infra/Adapters/BcryptService.js";
 import UserRouter from "./src/Infra/Http/Api/Routers/UserRouter.js";
 import UserController from "./src/Infra/Http/Controllers/User/UserController.js";
-import UserMySql from "./src/Infra/Repository/User/UserMySql.js";
+import UserMySql from "./src/Infra/Repository/User/UserMySql.js"; */
 
 
 
@@ -38,7 +38,7 @@ const input = new CreateUserUseCase.InputClass({
   password: "Kawa153#11a"
 })
 console.log(await output_.execute(input)) */
-const userRepo = new UserMySql()
+/* const userRepo = new UserMySql()
 const bcrypt = new BcryptService()
 const userCreate = new CreateUserUseCase(userRepo, bcrypt)
 const userDelete = new DeleteUserUseCase(userRepo)
@@ -69,5 +69,7 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
+ */
 /* const userController = new UserController() */
+
+

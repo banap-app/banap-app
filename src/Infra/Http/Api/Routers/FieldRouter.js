@@ -32,6 +32,54 @@ export default class FieldRouter {
           const result = await this.fieldController.handle(httpRequest)
           res.status(200).json(result)
         } catch (error) {
+          console.log(error)
+          return res.status(403).json({ error: error.message })
+        }
+      }
+    )
+
+    this.router.get('/getAllFields', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
+      try {
+        const httpRequest = new HttpRequest(req)
+        const result = await this.fieldController.getAllFields(httpRequest)
+        res.status(200).json(result)
+      } catch (error) {
+        return res.status(403).json({ error: error.message })
+      }
+    })
+
+    this.router.put('/update', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
+      try {
+        const httpRequest = new HttpRequest(req)
+        const result = await this.fieldController.handle(httpRequest)
+        res.status(200).json(result)
+      } catch (error) {
+        return res.status(403).json({ error: error.message })
+      }
+    })
+
+    this.router.delete('/delete', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
+      try {
+        const httpRequest = new HttpRequest(req)
+        const result = await this.fieldController.handle(httpRequest)
+        res.status(200).json(result)
+      } catch (error) {
+        return res.status(403).json({ error: error.message })
+      }
+    })
+
+    this.router.get(
+      '/getField/:fieldId',
+      this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware),
+      async (req, res) => {
+        try {
+          const httpRequest = new HttpRequest(req)
+          const result = await this.fieldController.handle(httpRequest)
+          if (!result.success) {
+            return res.status(404).json(result)
+          }
+          return res.status(200).json(result)
+        } catch (error) {
           return res.status(403).json({ error: error.message })
         }
       }

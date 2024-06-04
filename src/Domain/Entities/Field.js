@@ -90,7 +90,7 @@ export default class Field extends Entity {
     }
 
     DomainValidator.str_is_not_empty(this.get('name'))
-    DomainValidator.str_is_not_empty(this.get('owner'))
+    DomainValidator.str_is_not_empty(this.get('ownerId'))
     DomainValidator.str_is_not_empty(this.get('firstCoordinate'))
     DomainValidator.str_is_not_empty(this.get('secondCoordinate'))
     DomainValidator.str_is_not_empty(this.get('thirdCoordinate'))
