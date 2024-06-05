@@ -56,7 +56,7 @@ export default class UserController extends Controller {
       case 'GET':
         switch (httpRequest.path) {
           case '/user/user':
-            return await this.getUser(httpRequest.headers.authorization)
+            return await this.getUser(httpRequest.body)
           default:
             throw new Error(
               `Path ${httpRequest.path} is not allowed for method POST`
@@ -91,7 +91,7 @@ export default class UserController extends Controller {
     if (!data) {
       throw new Error('data is required')
     }
-    const input = new GetUserUseCase.InputClass(data.userId)
+    const input = new GetUserUseCase.InputClass(data.ownerId)
     const output = await this.useCaseGetUser.execute(input)
     return output
   }

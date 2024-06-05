@@ -37,7 +37,7 @@ export default class Property extends Entity {
         throw new TypeException(`${propsString[propName]} must be a string`)
       }
     }
-  
+
     if (!validateUuid(this.get('id'))) {
       throw new TypeException('ID must be a valid UUID')
     }

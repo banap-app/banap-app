@@ -12,7 +12,6 @@ export default class MySqlConnection {
   }
 
   static async disconnect () {
-    console.log('Closing connection')
     return (await this.connect()).destroy
   }
 }

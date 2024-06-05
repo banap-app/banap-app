@@ -1,4 +1,5 @@
 import UseCase from '../../../__seedwork/Application/UseCase.js'
+import User from '../../../Domain/Entities/User.js'
 import UserRepository from '../../../Domain/Repositories/UserRepositories/UserRepository.js'
 
 export default class GetUserUseCase extends UseCase {
@@ -17,8 +18,13 @@ export default class GetUserUseCase extends UseCase {
   }
 
   static OutputClass = class {
-    constructor (user) {
-      this.user = user
+    constructor (success, message, name, email, createdAt, active) {
+      this.success = success
+      this.message = message
+      this.name = name
+      this.email = email
+      this.createdAt = createdAt
+      this.active = active
     }
   }
 
@@ -26,7 +32,8 @@ export default class GetUserUseCase extends UseCase {
     if (!(data instanceof GetUserUseCase.InputClass)) {
       throw new Error('Data is not an instance of InputClass')
     }
-    const user = await this.userRepository.findById(data.userId)
-    return new GetUserUseCase.OutputClass(user)
-  }
+    const userFind = await this.userRepository.findById(data.userId)
+    const createdAt = userFind[0].created_at
+    return new GetUserUseCase.OutputClass(true, 'User finded', userFind[0].name_user, userFind[0].email, createdAt, userFind[0].active)
+}
 }

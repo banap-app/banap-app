@@ -47,10 +47,10 @@ export default class UserRouter {
       }
     }, async (req, res) => await this.authTokenMiddleware.gerenateToken(req, res))
 
-    this.router.get('/user/:id', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
+    this.router.get('/get', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
       try {
         const httpRequest = new HttpRequest(req)
-        httpRequest.path = '/user'
+        httpRequest.path = '/user/user'
         const result = await this.userController.handle(httpRequest)
 
         if (!result) {

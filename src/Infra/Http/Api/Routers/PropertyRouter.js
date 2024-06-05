@@ -31,8 +31,10 @@ export default class PropertyRouter {
         try {
           const httpRequest = new HttpRequest(req)
           const result = await this.propertyController.handle(httpRequest)
+          console.log(result)
           res.status(200).json(result)
         } catch (error) {
+          console.log(error)
           res.status(500).json({ error: error.message })
         }
       }

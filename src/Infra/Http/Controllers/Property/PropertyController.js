@@ -32,7 +32,7 @@ export default class PropertyController extends Controller {
   async handle (httpRequest) {
     switch (httpRequest.method) {
       case 'POST':
-        return await this.create(httpRequest)
+        return await this.create(httpRequest.body)
       case 'GET':
         switch (httpRequest.path) {
           case '/allProperties':
@@ -55,8 +55,9 @@ export default class PropertyController extends Controller {
     if (!data) {
       throw new Error('data is required')
     }
-
+    console.log(data)
     const input = new CreatePropertyUseCase.InputClass(data.ownerId, data.name)
+    console.log(input)
     const output = await this.createPropertyUseCase.execute(input)
     return output
   }
