@@ -6,9 +6,37 @@ import {
   LoginUpperBubbles,
   LoginLowerBubbles,
 } from '../assets/PagesAssets'
+import { useState } from 'react'
 
 const LoginPage = () => {
   const navigate = useNavigate()
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    const responseHttp = await fetch('http://localhost:3000/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    })
+
+    const response = await responseHttp.json()
+    
+    
+    if (responseHttp.status === 200) {
+      localStorage.setItem('token', response.token)
+      navigate('/app')
+    } else {
+      alert('Usuário ou senha incorretos')
+    }
+  }
 
   return (
     <div className='relative flex h-full w-full flex-col items-center'>
@@ -39,7 +67,7 @@ const LoginPage = () => {
             Entre com sua<br></br>conta!
           </p>
         </div>
-        <form>
+        <form onSubmit={e => handleSubmit(e)}>
           <div className='h-auto w-[244px]'>
             <div className='flex flex-col gap-5'>
               <div className='flex flex-col gap-2.5'>
@@ -54,6 +82,7 @@ const LoginPage = () => {
                   autoComplete='email'
                   required
                   className='font-regular w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark/75'
+                  onChange={(e)=> setEmail(e.target.value)}
                 />
               </div>
               <div className='flex flex-col gap-2.5'>
@@ -68,6 +97,7 @@ const LoginPage = () => {
                   autoComplete='current-password'
                   required
                   className='font-regular w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark/75'
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>

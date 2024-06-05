@@ -1,7 +1,29 @@
+import { useNavigate } from 'react-router-dom'
 import { MainPageLines } from '../assets/PagesAssets'
 import { Plus } from 'lucide-react'
+import { useEffect, useState } from 'react'
+
 
 const MainPage = () => {
+  const [dataResponse, setDataResponse] = useState([])
+  const [loading, isLoading] = useState(false)
+  const navigate = useNavigate()
+
+  async function fetchData() {
+
+    const response = await fetch('http://localhost:3000/property/allProperties', {
+         headers: { 'Content-Type' : 'application/json' , 'authorization': localStorage.getItem('token') }})
+
+    const data = await response.json()
+    console.log(data.property[0]);
+
+    setDataResponse(() => data.property)
+  }
+  
+  useEffect(()=>{
+    fetchData();
+  }, [])
+
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
       <div className='absolute top-[40px] flex w-[320px] flex-row items-center justify-between'>
@@ -13,17 +35,27 @@ const MainPage = () => {
       <div className='absolute top-[105px] z-10'>
         <MainPageLines />
       </div>
-      <div className='flex flex-col gap-10'>
-        <p className='text-center text-base font-bold text-[#8c8c8c]'>
-          Ainda não há uma<br></br>propriedade cadastrada
-        </p>
-        <button className='h-[56px] w-[220px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
-          <div className='flex items-center justify-between px-[15px]'>
-            <Plus />
-            Nova Propriedade
-          </div>
-        </button>
+      {!loading  ? (
+<div>
+        {dataResponse.map(item => (
+          <p key={item._id}>{item.name}</p>
+        ))}
+  </div>
+) : (
+  <div className='flex flex-col gap-10'>
+    
+    <p className='text-center text-base font-bold text-[#8c8c8c]'>
+      Ainda não há uma<br></br>propriedade cadastrada
+    </p>
+    <button className='h-[56px] w-[220px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
+      <div className='flex items-center justify-between px-[15px]'>
+        <Plus />
+        Nova Propriedade
       </div>
+    </button>
+  </div>
+)}
+
     </div>
   )
 }
