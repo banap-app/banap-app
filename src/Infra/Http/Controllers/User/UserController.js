@@ -2,9 +2,10 @@ import LoginUserUseCase from '../../../../Application/UseCases/UserUseCases/Logi
 import CreateUserUseCase from '../../../../Application/UseCases/UserUseCases/CreateUserUseCase.js'
 import UseCase from '../../../../__seedwork/Application/UseCase.js'
 import Controller from '../../../../__seedwork/Infra/Controller.js'
+import GetUserUseCase from '../../../../Application/UseCases/UserUseCases/GetUserUseCase.js'
 
 export default class UserController extends Controller {
-  constructor (useCaseCreate, useCaseDelete, useCaseLogin, useCaseUpdate) {
+  constructor (useCaseCreate, useCaseDelete, useCaseLogin, useCaseUpdate, useCaseGetUser) {
     super()
     if (!useCaseCreate) {
       throw new Error('useCaseCreate is required')
@@ -26,7 +27,8 @@ export default class UserController extends Controller {
       !(useCaseCreate instanceof UseCase) ||
       !(useCaseDelete instanceof UseCase) ||
       !(useCaseLogin instanceof UseCase) ||
-      !(useCaseUpdate instanceof UseCase)
+      !(useCaseUpdate instanceof UseCase) ||
+      !(useCaseGetUser instanceof GetUserUseCase)
     ) {
       throw new Error('useCase must be an instance of UseCase')
     }
@@ -35,6 +37,7 @@ export default class UserController extends Controller {
     this.useCaseDelete = useCaseDelete
     this.useCaseLogin = useCaseLogin
     this.useCaseUpdate = useCaseUpdate
+    this.useCaseGetUser = useCaseGetUser
   }
 
   async handle (httpRequest) {
@@ -45,6 +48,15 @@ export default class UserController extends Controller {
             return this.create(httpRequest.body)
           case '/login':
             return this.login(httpRequest.body)
+          default:
+            throw new Error(
+              `Path ${httpRequest.path} is not allowed for method POST`
+            )
+        }
+      case 'GET':
+        switch (httpRequest.path) {
+          case '/user/user':
+            return await this.getUser(httpRequest.headers.authorization)
           default:
             throw new Error(
               `Path ${httpRequest.path} is not allowed for method POST`
@@ -72,6 +84,15 @@ export default class UserController extends Controller {
     }
     const input = new LoginUserUseCase.InputClass(data)
     const output = await this.useCaseLogin.execute(input)
+    return output
+  }
+
+  async getUser (data) {
+    if (!data) {
+      throw new Error('data is required')
+    }
+    const input = new GetUserUseCase.InputClass(data.userId)
+    const output = await this.useCaseGetUser.execute(input)
     return output
   }
 }

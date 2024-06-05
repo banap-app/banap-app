@@ -47,6 +47,7 @@ export default class UserMySql extends UserRepository {
   async findById (id) {
     super.findById(id)
     const connection = await this.createConnection()
+    console.log('finding connection');
     const [results, fields] = await connection.execute(
       'SELECT * FROM users WHERE `id` =?',
       [id]

@@ -46,6 +46,22 @@ export default class UserRouter {
         return res.status(500).json({ error: error.message })
       }
     }, async (req, res) => await this.authTokenMiddleware.gerenateToken(req, res))
+
+    this.router.get('/user/:id', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
+      try {
+        const httpRequest = new HttpRequest(req)
+        httpRequest.path = '/user'
+        const result = await this.userController.handle(httpRequest)
+
+        if (!result) {
+          res.status(400).json(result)
+        }
+
+        res.status(200).json(result)
+      } catch (error) {
+
+      }
+    })
   }
 
   getRouter () {

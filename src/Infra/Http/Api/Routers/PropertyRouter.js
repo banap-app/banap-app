@@ -30,7 +30,7 @@ export default class PropertyRouter {
       async (req, res) => {
         try {
           const httpRequest = new HttpRequest(req)
-          const result = await this.propertyController.create(httpRequest.body)
+          const result = await this.propertyController.handle(httpRequest)
           res.status(200).json(result)
         } catch (error) {
           res.status(500).json({ error: error.message })
