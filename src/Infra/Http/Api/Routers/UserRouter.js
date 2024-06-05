@@ -35,7 +35,6 @@ export default class UserRouter {
       try {
         req.httpRequest = new HttpRequest(req)
         const result = await this.userController.handle(req.httpRequest)
-
         req.body = { ...req.httpRequest.body, userId: result.userId }
 
         if (!result.success) {

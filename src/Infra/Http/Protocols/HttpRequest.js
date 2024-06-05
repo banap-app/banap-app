@@ -7,5 +7,6 @@ export default class HttpRequest {
     this.params = req.params
     this.headers = req.headers
     this.file = req.file
+    this.status = req.status
   }
 }
