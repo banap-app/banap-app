@@ -9,19 +9,19 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await fetch('http://localhost:3000/user/create', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         name,
         email,
         password,
-        active: true
-      })
+        active: true,
+      }),
     })
 
     if (response.status === 200) {
@@ -30,7 +30,6 @@ const RegisterPage = () => {
       alert('Erro ao cadastrar')
     }
   }
-
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -56,7 +55,7 @@ const RegisterPage = () => {
           informações,nos<br></br>diga seu...
         </p>
       </div>
-      <form onSubmit={(e)=>handleSubmit(e)}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className='mt-10 flex h-[482px] w-[330px] flex-col items-center justify-center'>
           <div className='flex flex-col gap-10'>
             <div className='flex flex-col gap-2.5'>
@@ -71,7 +70,7 @@ const RegisterPage = () => {
                 autoComplete='name'
                 required
                 className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                onChange={(e)=> setName(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className='flex flex-col gap-2.5'>
@@ -86,7 +85,7 @@ const RegisterPage = () => {
                 autoComplete='email'
                 required
                 className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                onChange={(e)=> setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className='flex flex-col gap-2.5'>
@@ -101,7 +100,7 @@ const RegisterPage = () => {
                 autoComplete='new-password'
                 required
                 className='font-regular w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                onChange={(e)=> setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>

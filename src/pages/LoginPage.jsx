@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const responseHttp = await fetch('http://localhost:3000/user/login', {
       method: 'POST',
@@ -23,13 +23,12 @@ const LoginPage = () => {
       },
       body: JSON.stringify({
         email,
-        password
-      })
+        password,
+      }),
     })
 
     const response = await responseHttp.json()
-    
-    
+
     if (responseHttp.status === 200) {
       localStorage.setItem('token', response.token)
       navigate('/app')
@@ -67,7 +66,7 @@ const LoginPage = () => {
             Entre com sua<br></br>conta!
           </p>
         </div>
-        <form onSubmit={e => handleSubmit(e)}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className='h-auto w-[244px]'>
             <div className='flex flex-col gap-5'>
               <div className='flex flex-col gap-2.5'>
@@ -82,7 +81,7 @@ const LoginPage = () => {
                   autoComplete='email'
                   required
                   className='font-regular w-[243px] border-b-[1px] border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark/75'
-                  onChange={(e)=> setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className='flex flex-col gap-2.5'>

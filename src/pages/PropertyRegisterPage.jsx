@@ -1,9 +1,30 @@
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { RegisterUpperLines, RegisterLowerLines } from '../assets/PagesAssets'
+import { useState } from 'react'
 
 const PropertyRegister = () => {
   const navigate = useNavigate()
+  const [propertyName, setPropertyName] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const response = await fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        authrization: localStorage.getItem('token'),
+      },
+      body: JSON.stringify({
+        propertyName,
+      }),
+    })
+    if (response.status === 201) {
+      navigate('/app')
+    } else {
+      alert('Erro ao cadastrar')
+    }
+  }
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -28,7 +49,7 @@ const PropertyRegister = () => {
           O primeiro passo a ser feito é cadastrar<br></br>sua propriedade...
         </p>
       </div>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className='absolute right-[30px] top-[275px] flex flex-col items-center justify-center gap-[380px]'>
           <div className='flex flex-col gap-[15px]'>
             <label htmlFor='property-name' className='text-2xl font-medium'>
@@ -42,6 +63,7 @@ const PropertyRegister = () => {
               autoComplete='name'
               required
               className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
+              onChange={(e) => setPropertyName(e.target.value)}
             />
           </div>
           <button
