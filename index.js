@@ -35,6 +35,6 @@ spinner.start()
 setTimeout(() => {
   app.listen(PORT, () => {
     spinner.stop()
-    console.log(chalk.green(figlet.textSync(`Servidor rodando na porta ${PORT}`)))
+    console.log(chalk.green(figlet.textSync(`Servidor rodando na porta ${PORT}`, {font: 'Small'})))
   })
 }, 3000)
