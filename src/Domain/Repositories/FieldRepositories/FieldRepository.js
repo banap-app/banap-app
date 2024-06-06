@@ -10,9 +10,9 @@ export default class FieldRepository extends Abstract {
     }
   }
 
-  delete(field) {
-    if (!(field instanceof Field)) {
-      throw new DomainException('field must be a Field')
+  delete (id) {
+    if (!id) {
+      throw new DomainException('id must be a string')
     }
   }
 
@@ -23,6 +23,15 @@ export default class FieldRepository extends Abstract {
   }
 
   findByUserId (id) {
+    if (!id) {
+      throw new DomainException('id is required')
+    }
+    if (typeof id !== 'string') {
+      throw new TypeException('id must be a string')
+    }
+  }
+
+  findById (id) {
     if (!id) {
       throw new DomainException('id is required')
     }

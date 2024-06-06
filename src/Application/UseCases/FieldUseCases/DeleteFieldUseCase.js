@@ -24,14 +24,22 @@ export default class DeleteFieldUseCase extends UseCase {
   }
 
   async execute (data) {
-    const field = await this.fieldRepository.findById(data.id)
+    if (!(data instanceof DeleteFieldUseCase.InputClass)) {
+      throw new Error('Data is not an instance of InputClass')
+    }
+    /* const field = await this.fieldRepository.findById(data.id)
     if (!field) {
       throw new Error('Field not found')
-    }
+    } */
     try {
-      await this.fieldRepository.delete(field)
+      const fields = await this.fieldRepository.findById(data.id) 
+      if (fields == null) {
+        return new DeleteFieldUseCase.OutputClass(false, 'Field not found')
+      }
+      await this.fieldRepository.delete(data.id)
       return new DeleteFieldUseCase.OutputClass(true, 'Success delete field')
     } catch (e) {
+      console.log(e);
       return new DeleteFieldUseCase.OutputClass(false, 'Error on delete field')
     }
   }

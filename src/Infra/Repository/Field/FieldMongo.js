@@ -85,10 +85,10 @@ export default class FieldMongo extends FieldRepository {
     /* await session.commitTransaction() */
   }
 
-  async delete (field) {
+  async delete (id) {
     await this.createConnection()
-    super.delete(field)
-    await FieldModel.findByIdAndDelete(field.get('id'))
+    super.delete(id)
+    await FieldModel.findByIdAndDelete(id)
   }
 
   findByUserId (id) {
@@ -101,5 +101,11 @@ export default class FieldMongo extends FieldRepository {
 
   findAll () {
     return []
+  }
+
+  async findById (id) {
+    super.findById(id)
+    await this.createConnection()
+    return await FieldModel.findById(id)
   }
 }
