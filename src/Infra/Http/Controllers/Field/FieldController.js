@@ -100,8 +100,8 @@ export default class FieldController extends Controller {
     if (!data) {
       throw new Error('No data to create')
     }
-
-    const input = new GetAllFieldUseCase.InputClass(data.idUser)
+    console.log(data)
+    const input = new GetAllFieldUseCase.InputClass(data.body.propertyId)
     const output = await this.getAllFieldUseCase.execute(input)
     return output
   }

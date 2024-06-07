@@ -31,6 +31,15 @@ export default class FieldRepository extends Abstract {
     }
   }
 
+  findByPropertyId (id) {
+    if (!id) {
+      throw new DomainException('id is required')
+    }
+    if (typeof id !== 'string') {
+      throw new TypeException('id must be a string')
+    }
+  }
+
   findById (id) {
     if (!id) {
       throw new DomainException('id is required')

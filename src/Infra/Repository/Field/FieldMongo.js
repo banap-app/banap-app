@@ -102,6 +102,13 @@ export default class FieldMongo extends FieldRepository {
   findAll () {
     return []
   }
+  
+  async findByPropertyId (idProperty) {
+    await this.createConnection()
+    super.findByPropertyId(idProperty)
+    const property = await FieldModel.find({ idProperty })
+    return property
+  }
 
   async findById (id) {
     super.findById(id)

@@ -38,10 +38,10 @@ export default class FieldRouter {
       }
     )
 
-    this.router.get('/getAllFields', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
+    this.router.post('/allFields', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req, res) => {
       try {
         const httpRequest = new HttpRequest(req)
-        const result = await this.fieldController.getAllFields(httpRequest)
+        const result = await this.fieldController.getAllField(httpRequest)
         res.status(200).json(result)
       } catch (error) {
         return res.status(403).json({ error: error.message })
@@ -74,6 +74,7 @@ export default class FieldRouter {
       async (req, res) => {
         try {
           const httpRequest = new HttpRequest(req)
+          httpRequest.path = '/getField'
           const result = await this.fieldController.handle(httpRequest)
           if (!result.success) {
             return res.status(404).json(result)

@@ -11,8 +11,8 @@ export default class GetAllFieldUseCase extends UseCase {
   }
 
   static InputClass = class {
-    constructor (idUser) {
-      this.idUser = idUser
+    constructor (idProperty) {
+      this.idProperty = idProperty
     }
   }
 
@@ -30,7 +30,8 @@ export default class GetAllFieldUseCase extends UseCase {
     }
 
     try {
-      const fields = await this.fieldRepository.findByUserId(data.idUser)
+      const fields = await this.fieldRepository.findByPropertyId(data.idProperty)
+      console.log(fields);
       if (fields.length === 0) {
         return new GetAllFieldUseCase.OutputClass(
           true,
@@ -47,7 +48,7 @@ export default class GetAllFieldUseCase extends UseCase {
     } catch (e) {
       return new GetAllFieldUseCase.OutputClass(
         false,
-        'Error on get fields',
+        'Error on get fields ' + e,
         null
       )
     }

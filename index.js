@@ -24,10 +24,10 @@ app.use('/user', userRouter.getRouter())
 app.use('/property', propertyRouter.getRouter())
 app.use('/field', fieldRouter.getRouter())
 
-
 const spinner = ora({
   text: 'Iniciando o servidor...',
-  color: 'yellow'
+  color: 'yellow',
+  spinner: 'dots8Bit'
 })
 spinner.start()
 
@@ -35,6 +35,6 @@ spinner.start()
 setTimeout(() => {
   app.listen(PORT, () => {
     spinner.stop()
-    console.log(chalk.green(figlet.textSync(`Servidor rodando na porta ${PORT}`, {font: 'Small'})))
+    console.log(chalk.green(figlet.textSync(`Servidor rodando na porta ${PORT}`, { font: 'Small' })))
   })
 }, 3000)
