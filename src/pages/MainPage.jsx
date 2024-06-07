@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { MainPageLines } from '../assets/PagesAssets'
 import { ChevronRight, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -61,24 +61,21 @@ const MainPage = () => {
       {!loading ? (
         <div className='flex w-[330px] flex-col gap-[60px]'>
           {dataResponse.map((item) => (
-            <>
-              <div className='flex flex-col gap-[35px]'>
-                <div className='flex items-center justify-between'>
-                  <p
-                    key={item._id}
-                    className='text-[28px] font-extrabold text-banap-dark'
-                  >
-                    {item.name}
-                  </p>
-                  <ChevronRight color='#1a5d1a' />
-                </div>
-                <div className='flex gap-[25px]'>
+            <div key={item._id} className='flex flex-col gap-[35px]'>
+              <div className='flex items-center justify-between'>
+                <p className='text-[28px] font-extrabold text-banap-dark'>
+                  {item.name}
+                </p>
+                <ChevronRight color='#1a5d1a' />
+              </div>
+              <div className='flex gap-[25px]'>
+                <Link to={`/field/register/1/${item._id}`}>
                   <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>
                     <Plus color='#bdbdbd' size={'50px'} />
                   </div>
-                </div>
+                </Link>
               </div>
-            </>
+            </div>
           ))}
         </div>
       ) : (

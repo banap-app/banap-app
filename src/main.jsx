@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       { path: 'app', element: <MainPage /> },
       { path: 'property/create', element: <PropertyRegister /> },
       { path: 'property', element: <Property /> },
-      { path: 'field/register/1', element: <FieldRegisterPage1 /> },
+      { path: 'field/register/1/:id', element: <FieldRegisterPage1 /> },
       { path: 'field/register/2', element: <FieldRegisterPage2 /> },
       { path: 'field/register/3', element: <FieldRegisterPage3 /> },
       { path: 'field', element: <FieldPage /> },
