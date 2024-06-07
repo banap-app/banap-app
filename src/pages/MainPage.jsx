@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 
 const MainPage = () => {
   const [dataResponse, setDataResponse] = useState([])
+  const [name, setName] = useState('Usuário')
   const [loading, isLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -13,6 +14,7 @@ const MainPage = () => {
     const response = await fetch(
       'http://localhost:3000/property/allProperties',
       {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
           authorization: localStorage.getItem('token'),
@@ -21,21 +23,35 @@ const MainPage = () => {
     )
 
     const data = await response.json()
-    console.log(data.property[0])
 
     setDataResponse(() => data.property)
     isLoading(false)
   }
 
+  async function fetchUser() {
+    const response = await fetch('http://localhost:3000/user/get', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('token'),
+      },
+    })
+
+    const data = await response.json()
+
+    setName(() => data.name)
+  }
+
   useEffect(() => {
     fetchData()
+    fetchUser()
   }, [])
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
       <div className='absolute top-[40px] flex w-[320px] flex-row items-center justify-between'>
         <p className='text-base font-bold'>
-          Olá, <span className='text-banap-light'>Gilmar</span>
+          Olá, <span className='text-banap-light'>{name}</span>
         </p>
         <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
       </div>
