@@ -71,7 +71,7 @@ const FieldPage = () => {
                 Descrição
               </p>
             </div>
-            <p className='font-regular text-base'>
+            <p className='font-regular text-justify text-base'>
               Esse talhão fica perto da cerca ao leste da fazenda, ao lado de
               outros talhões de banana prata.
             </p>
@@ -83,7 +83,7 @@ const FieldPage = () => {
                 Ultimas análises
               </p>
             </div>
-            <p className='font-regular text-base text-banap-dark'>
+            <p className='font-regular text-justify text-base text-banap-dark'>
               Listadas abaixo estão as ultímas 5 análises feitas nesse talhão!
             </p>
           </div>

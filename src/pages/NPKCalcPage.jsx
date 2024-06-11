@@ -57,11 +57,11 @@ const NPKCalcPage = () => {
                   Produtividade esperada
                 </label>
                 <select className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'>
-                  <option value='20'>&lt;20</option>
-                  <option value='20-30'>20-30</option>
-                  <option value='30-40'>30-40</option>
-                  <option value='40-50'>40-50</option>
-                  <option value='50'>&gt;50</option>
+                  <option value='20'>Menor que 20%</option>
+                  <option value='20-30'>Entre 20% e 30%</option>
+                  <option value='30-40'>Entre 30% e 40%</option>
+                  <option value='40-50'>Entre 40% e 50%</option>
+                  <option value='50'>Maior que 50%</option>
                 </select>
               </div>
             </div>
