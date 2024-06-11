@@ -6,9 +6,21 @@ import {
   Troubleshoot,
 } from '../assets/PagesAssets'
 import { ArrowLeft, Trash2, Pen, Plus, FileText } from 'lucide-react'
+import DeleteModal from '../components/DeleteModal'
+import { useState } from 'react'
 
 const FieldPage = () => {
   const navigate = useNavigate()
+
+  const [isModalVisible, setModalVisible] = useState(false)
+
+  const openModal = () => {
+    setModalVisible(true)
+  }
+
+  const closeModal = () => {
+    setModalVisible(false)
+  }
 
   return (
     <div className='relative flex h-[1140px] w-full flex-col items-center justify-center'>
@@ -44,7 +56,10 @@ const FieldPage = () => {
                 <Pen />
                 Editar Talhão
               </button>
-              <button className='flex h-[51px] w-[51px] items-center justify-center rounded-[10px] bg-[#c4302b] text-white'>
+              <button
+                onClick={openModal}
+                className='flex h-[51px] w-[51px] items-center justify-center rounded-[10px] bg-[#c4302b] text-white'
+              >
                 <Trash2 />
               </button>
             </div>
@@ -87,6 +102,7 @@ const FieldPage = () => {
           </div>
         </div>
       </div>
+      <DeleteModal visible={isModalVisible} closeModal={closeModal} />
     </div>
   )
 }
