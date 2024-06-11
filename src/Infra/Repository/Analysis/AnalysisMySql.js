@@ -2,10 +2,70 @@ import AnalysisRepository from '../../../Domain/Repositories/AnalysisRepositorie
 import MySqlConnection from '../../Database/MySqlConnection.js'
 
 export default class AnalysisMySql extends AnalysisRepository {
-    async createConnection()
-    save (analysis) {
-      super.save(analysis)
-      const sql = ''
-      
+  async createConnection () {
+    return await MySqlConnection.connect()
+  }
+
+  async save (analysis) {
+    super.save(analysis)
+    const connection = await this.createConnection()
+    try {
+      const sql = 'INSERT INTO analysis (uuid, '
+      await connection.execute(sql, [])
+      await this.closeConnection()
+      return true
+    } catch (err) {
+      console.log(err)
+      await this.closeConnection()
+      return false
     }
+  }
+
+  async delete (id) {
+    super.delete(id)
+    const connection = await this.createConnection()
+    const [results, fields] = await connection.execute(
+      'DELETE FROM analysis WHERE `id` =?',
+      [id]
+    )
+    await this.closeConnection()
+    return results
+  }
+
+  async update (analysis) {
+    super.update(analysis)
+    const connection = await this.createConnection()
+    try {
+      const sql = 'INSERT INTO analysis (uuid, '
+      await connection.execute(sql, [])
+      await this.closeConnection()
+      return true
+    } catch (err) {
+      console.log(err)
+      await this.closeConnection()
+      return false
+    }
+  }
+
+  async findById (id) {
+    super.findById(id)
+    const connection = await this.createConnection()
+    const [results, fields] = await connection.execute(
+      'SELECT * FROM analysis WHERE `id` =?',
+      [id]
+    )
+    await this.closeConnection()
+    return results
+  }
+
+  async findAllByFieldId (fieldId) {
+    super.findAllByFieldId(fieldId)
+    const connection = await this.createConnection()
+    const [results, fields] = await connection.execute(
+      'SELECT * FROM analysis WHERE `fieldId` =?',
+      [fieldId]
+    )
+    await this.closeConnection()
+    return results
+  }
 }

@@ -6,6 +6,7 @@ import cors from 'cors'
 import ora from 'ora'
 import chalk from 'chalk'
 import figlet from 'figlet'
+import AnalysisRouterFactory from './src/Infra/Factory/Analysis/AnalysisRouterFactory.js'
 
 const app = express()
 const PORT = 3000
@@ -14,6 +15,7 @@ const PORT = 3000
 const userRouter = UserRouterFactory.create()
 const propertyRouter = PropertyRouterFactory.create()
 const fieldRouter = FieldRouterFactory.create()
+const analysisRouter = AnalysisRouterFactory.create()
 
 app.use(express.json())
 app.use(cors('*'))
@@ -23,6 +25,7 @@ app.use(urlencoded({ extended: false }))
 app.use('/user', userRouter.getRouter())
 app.use('/property', propertyRouter.getRouter())
 app.use('/field', fieldRouter.getRouter())
+app.use('/analysis', analysisRouter.getRouter())
 
 const spinner = ora({
   text: 'Iniciando o servidor...',
