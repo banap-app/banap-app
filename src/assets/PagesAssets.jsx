@@ -1,5 +1,7 @@
 import Image1 from './imgs/InitialPageImage.png'
 import Image2 from './imgs/FieldImage.png'
+import Image3 from './imgs/ResultCalcMessage.png'
+import Image4 from './imgs/ResultNPKMessage.png'
 
 export const LoginUpperLines = () => {
   return (
@@ -346,4 +348,18 @@ export const FieldImage = () => {
       <img src={Image2} alt='' />
     </>
   )
+}
+
+export const ResultCalcImage = () => {
+  return (
+    <>
+      <img src={Image3} alt='' />
+    </>
+  )
+}
+
+export const ResultNPKImage = () => {
+  ;<>
+    <img src='{Image4}' alt='' />
+  </>
 }

@@ -5,21 +5,21 @@ import { useState } from 'react'
 
 const PropertyRegister = () => {
   const navigate = useNavigate()
-  const [propertyName, setPropertyName] = useState('')
+  const [name, setPropertyName] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('', {
+    const response = await fetch('http://localhost:3000/property/create', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
-        authrization: localStorage.getItem('token'),
+        authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
-        propertyName,
+        name,
       }),
     })
-    if (response.status === 201) {
+    if (response.status === 200) {
       navigate('/app')
     } else {
       alert('Erro ao cadastrar')

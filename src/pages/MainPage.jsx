@@ -59,7 +59,7 @@ const MainPage = () => {
         <MainPageLines />
       </div>
       {!loading ? (
-        <div className='flex w-[330px] flex-col gap-[60px]'>
+        <div className='absolute top-[150px] flex w-[330px] flex-col gap-[60px]'>
           {dataResponse.map((item) => (
             <div key={item._id} className='flex flex-col gap-[35px]'>
               <div className='flex items-center justify-between'>
@@ -69,7 +69,7 @@ const MainPage = () => {
                 <ChevronRight color='#1a5d1a' />
               </div>
               <div className='flex gap-[25px]'>
-                <Link to={`/field/register/1/${item._id}`}>
+                <Link to={`/field/register/${item._id}`}>
                   <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>
                     <Plus color='#bdbdbd' size={'50px'} />
                   </div>
@@ -83,12 +83,14 @@ const MainPage = () => {
           <p className='text-center text-base font-bold text-[#8c8c8c]'>
             Ainda não há uma<br></br>propriedade cadastrada
           </p>
-          <button className='h-[56px] w-[220px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
-            <div className='flex items-center justify-between px-[15px]'>
-              <Plus />
-              Nova Propriedade
-            </div>
-          </button>
+          <Link to={'/property/create'}>
+            <button className='h-[56px] w-[220px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
+              <div className='flex items-center justify-between px-[15px]'>
+                <Plus />
+                Nova Propriedade
+              </div>
+            </button>
+          </Link>
         </div>
       )}
     </div>

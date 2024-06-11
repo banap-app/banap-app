@@ -21,7 +21,7 @@ const LimingCalcPage = () => {
           <div className='w-[330px]'>
             <p className='text-[28px] font-extrabold'>
               Cálculo de Calagem<br></br>do{' '}
-              <span className='text-banap-light'>Solo...</span>
+              <span className='text-banap-dark'>Solo...</span>
             </p>
           </div>
           <div className='w-[330px]'>

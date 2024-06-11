@@ -10,12 +10,12 @@ import RegisterPage from './pages/RegisterPage.jsx'
 import MainPage from './pages/MainPage.jsx'
 import PropertyRegister from './pages/PropertyRegisterPage.jsx'
 import Property from './pages/Property.jsx'
-import FieldRegisterPage1 from './pages/FieldRegisterPage1.jsx'
-import FieldRegisterPage2 from './pages/FieldRegisterPage2.jsx'
-import FieldRegisterPage3 from './pages/FieldRegisterPage3.jsx'
+import FieldRegisterPage from './pages/FieldRegisterPage.jsx'
 import FieldPage from './pages/FieldPage.jsx'
 import LimingCalcPage from './pages/LimingCalcPage.jsx'
 import LimingResultPage from './pages/LimingResultPage.jsx'
+import NPKResultPage from './pages/NPKResultPage.jsx'
+import NPKCalcPage from './pages/NPKCalcPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,12 +29,12 @@ const router = createBrowserRouter([
       { path: 'app', element: <MainPage /> },
       { path: 'property/create', element: <PropertyRegister /> },
       { path: 'property', element: <Property /> },
-      { path: 'field/register/1/:id', element: <FieldRegisterPage1 /> },
-      { path: 'field/register/2', element: <FieldRegisterPage2 /> },
-      { path: 'field/register/3', element: <FieldRegisterPage3 /> },
+      { path: 'field/register/:id', element: <FieldRegisterPage /> },
       { path: 'field', element: <FieldPage /> },
       { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
       { path: 'analysis/liming/result', element: <LimingResultPage /> },
+      { path: 'analysis/npk/calc', element: <NPKCalcPage /> },
+      { path: 'analysis/npk/result', element: <NPKResultPage /> },
     ],
   },
 ])

@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react'
-import { RegisterUpperLines } from '../assets/PagesAssets'
+import { RegisterUpperLines, ResultCalcImage } from '../assets/PagesAssets'
 import { useNavigate } from 'react-router-dom'
 
 const LimingResultPage = () => {
@@ -16,7 +16,10 @@ const LimingResultPage = () => {
       <div className='absolute left-[5px] top-[17px]'>
         <RegisterUpperLines />
       </div>
-      <div className='flex w-[330px] flex-col gap-[10px]'>
+      <div className='absolute left-[64px] top-[312px]'>
+        <ResultCalcImage />
+      </div>
+      <div className='absolute top-[104px] flex w-[330px] flex-col gap-[10px]'>
         <p className='text-[28px] font-extrabold'>
           Cálculo de Calagem<br></br>do{' '}
           <span className='text-banap-light'>Solo...</span>
@@ -26,19 +29,21 @@ const LimingResultPage = () => {
           informações disponibilzadas por você
         </p>
       </div>
-      <div className='relative h-[85px] w-[148px] rounded-[10px] bg-banap-light'>
-        <p className='flex justify-center text-[20px] font-extrabold text-white'>
-          Calcário
-        </p>
-        <div className='absolute bottom-[0px] flex h-[47px] w-[150px] items-center justify-center rounded-[10px] bg-white'>
-          <p className='text-center text-[24px] font-extrabold text-banap-light'>
-            6.550kg/h
+      <div className='absolute bottom-[60px] flex w-[330px] flex-col items-center justify-center gap-[87px]'>
+        <div className='flex h-[85px] w-[148px] flex-col justify-between rounded-[10px] bg-banap-light shadow-md'>
+          <p className='m-[7px] flex justify-center text-[20px] font-extrabold text-white'>
+            Calcário
           </p>
+          <div className='bottom-[0px] flex h-[47px] w-[148px] items-center justify-center rounded-[10px] border-white bg-white'>
+            <p className='text-center text-[24px] font-extrabold text-banap-light'>
+              6.550kg/h
+            </p>
+          </div>
         </div>
+        <button className='h-[38px] w-[243px] rounded-[5px] bg-banap-light text-sm font-extrabold text-white'>
+          Registrar cálculo
+        </button>
       </div>
-      <button className='h-[38px] w-[243px] rounded-[5px] bg-banap-light text-sm font-extrabold text-white'>
-        Registrar cálculo
-      </button>
     </div>
   )
 }
