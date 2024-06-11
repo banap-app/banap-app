@@ -3,14 +3,14 @@ import { NPKResultImage, RegisterUpperLines } from '../assets/PagesAssets'
 
 const NPKResultPage = () => {
   return (
-    <div className='relative flex h-[1054px] w-full flex-col items-center justify-center'>
+    <div className='relative flex h-[1080px] w-full flex-col items-center justify-center'>
       <div className='absolute left-[30px] top-[40px]'>
         <ArrowLeft />
       </div>
       <div className='absolute left-[5px] top-[17px]'>
         <RegisterUpperLines />
       </div>
-      <div className='absolute top-[104px] flex flex-col'>
+      <div className='absolute top-[104px] flex flex-col gap-[70px]'>
         <div className='flex flex-col gap-[43px]'>
           <div className='flex w-[330px] flex-col items-center justify-center gap-[70px]'>
             <div className='flex flex-col gap-[10px]'>
