@@ -30,7 +30,7 @@ const LimingResultPage = () => {
         </p>
       </div>
       <div className='absolute bottom-[60px] flex w-[330px] flex-col items-center justify-center gap-[87px]'>
-        <div className='flex h-[85px] w-[148px] flex-col justify-between rounded-[10px] bg-banap-light shadow-md'>
+        <div className=' h-[85px] w-[148px] rounded-[10px] bg-banap-light shadow-lg'>
           <p className='m-[7px] flex justify-center text-[20px] font-extrabold text-white'>
             Calcário
           </p>

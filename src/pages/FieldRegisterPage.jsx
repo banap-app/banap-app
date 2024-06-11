@@ -11,6 +11,7 @@ const FieldRegisterPage = () => {
   const [thirdCoordinate, setThirdCoordinate] = useState(0)
   const [fourthCoordinate, setFourthCoordinate] = useState(0)
   const [description, setDescription] = useState('')
+  const [cultureOfPlants, setCultureOfPlants] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,9 +24,9 @@ const FieldRegisterPage = () => {
       body: JSON.stringify({
         idProperty: id,
         name,
-        photo: 'a',
+        photo: '',
         description,
-        cultureOfPlants: 'a',
+        cultureOfPlants,
         firstCoordinate: Number(firstCoordinate),
         secondCoordinate: Number(secondCoordinate),
         thirdCoordinate: Number(thirdCoordinate),
@@ -41,7 +42,6 @@ const FieldRegisterPage = () => {
   }
 
   let { id } = useParams()
-  console.log(id)
 
   const [page, setPage] = useState(0)
 
@@ -232,14 +232,19 @@ const FieldRegisterPage = () => {
                 <div className='flex flex-col gap-[15px]'>
                   <label className='text-2xl font-medium'>Cultura</label>
                   <select
-                    name=''
-                    id=''
+                    onChange={(e) => setCultureOfPlants(e.target.value)}
                     className='h-[30px] w-[330px] rounded-[8px] bg-banap-light px-[8px] text-sm font-bold text-white outline-none'
                   >
-                    <option value='' className='bg-white text-black'>
+                    <option
+                      value='Banana Prata'
+                      className='bg-white text-black'
+                    >
                       Banana Prata
                     </option>
-                    <option value='' className='bg-white text-black'>
+                    <option
+                      value='Banana da Terra'
+                      className='bg-white text-black'
+                    >
                       Banana da Terra
                     </option>
                   </select>
