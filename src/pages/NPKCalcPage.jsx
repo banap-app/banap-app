@@ -56,10 +56,13 @@ const NPKCalcPage = () => {
                 <label htmlFor='' className='text-lg font-medium'>
                   Produtividade esperada
                 </label>
-                <input
-                  type='text'
-                  className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                />
+                <select className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'>
+                  <option value='20'>&lt;20</option>
+                  <option value='20-30'>20-30</option>
+                  <option value='30-40'>30-40</option>
+                  <option value='40-50'>40-50</option>
+                  <option value='50'>&gt;50</option>
+                </select>
               </div>
             </div>
             <div className='flex w-[330px] items-center justify-center'>

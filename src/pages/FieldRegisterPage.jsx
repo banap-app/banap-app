@@ -233,7 +233,7 @@ const FieldRegisterPage = () => {
                   <label className='text-2xl font-medium'>Cultura</label>
                   <select
                     onChange={(e) => setCultureOfPlants(e.target.value)}
-                    className='h-[30px] w-[330px] rounded-[8px] bg-banap-light px-[8px] text-sm font-bold text-white outline-none'
+                    className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
                   >
                     <option
                       value='Banana Prata'

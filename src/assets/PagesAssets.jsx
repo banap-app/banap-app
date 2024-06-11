@@ -358,8 +358,10 @@ export const ResultCalcImage = () => {
   )
 }
 
-export const ResultNPKImage = () => {
-  ;<>
-    <img src='{Image4}' alt='' />
-  </>
+export const NPKResultImage = () => {
+  return (
+    <>
+      <img src={Image4} alt='' />
+    </>
+  )
 }
