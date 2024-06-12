@@ -7,6 +7,7 @@ import {
   LoginLowerBubbles,
 } from '../assets/PagesAssets'
 import { useState } from 'react'
+import { customFetch } from '../utils/api'
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -16,24 +17,18 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const responseHttp = await fetch('http://localhost:3000/user/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
+    try {
+      const response = await customFetch('/user/login', 'POST', false, {
         email,
         password,
-      }),
-    })
+      })
 
-    const response = await responseHttp.json()
-
-    if (responseHttp.status === 200) {
-      localStorage.setItem('token', response.token)
-      navigate('/app')
-    } else {
-      alert('Usuário ou senha incorretos')
+      if (response.token) {
+        localStorage.setItem('token', response.token)
+        navigate('/app')
+      }
+    } catch (error) {
+      console.error('Error:', error)
     }
   }
 

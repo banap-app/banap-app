@@ -1,10 +1,26 @@
-export async function customFetch(url, method = 'GET', data = null) {
-  const requestOptions = {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: localStorage.getItem('token'),
-    },
+export async function customFetch(
+  url,
+  method = 'GET',
+  needToken = true,
+  data = null
+) {
+  let requestOptions = {}
+
+  if (needToken) {
+    requestOptions = {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: localStorage.getItem('token'),
+      },
+    }
+  } else {
+    requestOptions = {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
   }
 
   if (data) {
@@ -12,7 +28,10 @@ export async function customFetch(url, method = 'GET', data = null) {
   }
 
   try {
-    const response = await fetch(`http://localhost:3000${url}`, requestOptions)
+    const response = await fetch(
+      `${process.env.APP_API_URL}${url}`,
+      requestOptions
+    )
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`)
     }
