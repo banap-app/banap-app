@@ -10,8 +10,8 @@ export default class AnalysisMySql extends AnalysisRepository {
     super.save(analysis)
     const connection = await this.createConnection()
     try {
-      const sql = 'INSERT INTO analysis (uuid, '
-      await connection.execute(sql, [])
+      const sql = 'INSERT INTO analysis (uuid, idField, desiredBaseSaturation, currentBaseSaturation, totalCationExchangeCapacity, relativeTotalNeutralizingPower, phosphor, potassium, expectedProductivity) VALUES (?,?,?,?,?,?,?,?,?)'
+      await connection.execute(sql, [analysis.get('id'), analysis.get('idField'), analysis.get('desiredBaseSaturation'), analysis.get('currentBaseSaturation'), analysis.get('totalCationExchangeCapacity'), analysis.get('relativeTotalNeutralizingPower'), analysis.get('phosphor'), analysis.get('potassium'), analysis.get('expectedProductivity')])
       await this.closeConnection()
       return true
     } catch (err) {

@@ -9,12 +9,15 @@ export default class CreateAnalysisUseCase extends UseCase {
     if (!(analysisRepository instanceof AnalysisRepository)) {
       throw new TypeException('analysisRepository is required')
     }
+
+    this.analysisRepository = analysisRepository
   }
 
   static InputClass = class {
     constructor (id, idField, desiredBaseSaturation, currentBaseSaturation, totalCationExchangeCapacity, relativeTotalNeutralizingPower, isCalculateNpk, phosphor, potassium, expectedProductivity) {
       if (isCalculateNpk) {
-        this.phosphorus = phosphor
+        this.isCalculateNpk = isCalculateNpk
+        this.phosphor = phosphor
         this.potassium = potassium
         this.expectedProductivity = expectedProductivity
       }
@@ -41,16 +44,20 @@ export default class CreateAnalysisUseCase extends UseCase {
     }
 
     if (!data.isCalculateNpk) {
-      const analysis = new Analysis(data.id, data.idField, data.desiredBaseSaturation, data.currentBaseSaturation, data.totalCationExchangeCapacity, data.relativeTotalNeutralizingPower)
       try {
-        return new CreateAnalysisUseCase.OutputClass(true, 'Success on create analysis', analysis)
+        const analysis = new Analysis(data.id, data.idField, data.desiredBaseSaturation, data.currentBaseSaturation, data.totalCationExchangeCapacity, data.relativeTotalNeutralizingPower)
+        analysis.calculateLiming()
+        return new CreateAnalysisUseCase.OutputClass(true, 'Success on create analysis', analysis.to_dict())
       } catch (e) {
+        console.log('Error saved', e)
         return new CreateAnalysisUseCase.OutputClass(false, 'Error on create analysis', '')
       }
     } else {
-      const analysis = new Analysis(data.id, data.idField, data.desiredBaseSaturation, data.currentBaseSaturation, data.totalCationExchangeCapacity, data.relativeTotalNeutralizingPower)
       try {
+        const analysis = new Analysis(data.id, data.idField, data.desiredBaseSaturation, data.currentBaseSaturation, data.totalCationExchangeCapacity, data.relativeTotalNeutralizingPower)
+
         const resultCalculateNpk = analysis.calculateNPK(data.phosphorus, data.potassium, data.expectedProductivity)
+        console.log(analysis.to_dict())
         const output = this.analysisRepository.save(analysis)
         return new CreateAnalysisUseCase.OutputClass(true, 'Success on create analysis', analysis)
       } catch (e) {
