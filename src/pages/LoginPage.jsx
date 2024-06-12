@@ -25,7 +25,7 @@ const LoginPage = () => {
 
       if (response.token) {
         localStorage.setItem('token', response.token)
-        navigate('/app')
+        navigate('/home')
       }
     } catch (error) {
       console.error('Error:', error)

@@ -35,7 +35,7 @@ const FieldRegisterPage = () => {
     })
     console.log(await response.json())
     if (response.status === 200) {
-      navigate('/app')
+      navigate('/home')
     } else {
       alert('Erro ao cadastrar talhão.')
     }

@@ -1,6 +1,6 @@
 import { useNavigate, Link } from 'react-router-dom'
 import { MainPageLines } from '../assets/PagesAssets'
-import { ChevronRight, Plus } from 'lucide-react'
+import { Bell, ChevronRight, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { customFetch } from '../utils/api'
 
@@ -38,7 +38,10 @@ const MainPage = () => {
         <p className='text-base font-bold'>
           Olá, <span className='text-banap-light'>{userName}</span>
         </p>
-        <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
+        <div className='flex items-center justify-center gap-[27px]'>
+          <Bell />
+          <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
+        </div>
       </div>
       <div className='absolute top-[105px] z-10'>
         <MainPageLines />

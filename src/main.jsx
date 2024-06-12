@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { index: true, element: <InitialPage /> },
       { path: 'login', element: <LoginPage /> },
       { path: 'register', element: <RegisterPage /> },
-      { path: 'app', element: <MainPage /> },
+      { path: 'home', element: <MainPage /> },
       { path: 'property/create', element: <PropertyRegister /> },
       { path: 'property', element: <Property /> },
       { path: 'field/register/:id', element: <FieldRegisterPage /> },

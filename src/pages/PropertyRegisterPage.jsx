@@ -20,7 +20,7 @@ const PropertyRegister = () => {
       }),
     })
     if (response.status === 200) {
-      navigate('/app')
+      navigate('/home')
     } else {
       alert('Erro ao cadastrar')
     }
