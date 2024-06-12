@@ -7,7 +7,7 @@ import ErrorPage from './pages/ErrorPage.jsx'
 import InitialPage from './pages/InitialPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
-import MainPage from './pages/MainPage.jsx'
+import HomePage from './pages/HomePage.jsx'
 import PropertyRegister from './pages/PropertyRegisterPage.jsx'
 import Property from './pages/Property.jsx'
 import FieldRegisterPage from './pages/FieldRegisterPage.jsx'
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { index: true, element: <InitialPage /> },
       { path: 'login', element: <LoginPage /> },
       { path: 'register', element: <RegisterPage /> },
-      { path: 'home', element: <MainPage /> },
+      { path: 'home', element: <HomePage /> },
       { path: 'property/create', element: <PropertyRegister /> },
       { path: 'property', element: <Property /> },
       { path: 'field/register/:id', element: <FieldRegisterPage /> },

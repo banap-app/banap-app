@@ -1,10 +1,32 @@
 import { useNavigate, Link } from 'react-router-dom'
-import { MainPageLines } from '../assets/PagesAssets'
+import { LeaveIcon, MainPageLines } from '../assets/PagesAssets'
 import { Bell, ChevronRight, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { customFetch } from '../utils/api'
 
-const MainPage = () => {
+const ProfileDropdown = ({ isOpen, setIsOpen }) => {
+  return (
+    <div
+      role='menu'
+      aria-orientation='vertical'
+      aria-labelledby='user-menu-button'
+      className={`absolute right-[0px] top-[50px] z-20 flex h-[56px] w-[153px] items-center justify-center rounded-[12px] border bg-white ${!isOpen && 'hidden'}`}
+    >
+      <button
+        role='menuitem'
+        className='h-[40px] w-[136px] rounded-[9px] border-none bg-[#121212] bg-opacity-15'
+      >
+        <div className='flex items-center gap-[20px] px-[12px]'>
+          <LeaveIcon />
+          <p className='text-base font-semibold text-[#2c2c2c]'>Sair</p>
+        </div>
+      </button>
+    </div>
+  )
+}
+
+const HomePage = () => {
+  const [isOpen, setIsOpen] = useState(false)
   const [propertyData, setPropertyData] = useState([])
   const [userName, setUserName] = useState('Usuário')
   const [loading, isLoading] = useState(false)
@@ -40,13 +62,16 @@ const MainPage = () => {
         </p>
         <div className='flex items-center justify-center gap-[27px]'>
           <Bell />
-          <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
+          <button onClick={() => setIsOpen(!isOpen)}>
+            <div className='h-[40px] w-[40px] rounded-full bg-black'></div>
+          </button>
+          <ProfileDropdown isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
       <div className='absolute top-[105px] z-10'>
         <MainPageLines />
       </div>
-      {!loading ? (
+      {loading ? (
         <div className='absolute top-[150px] flex w-[330px] flex-col gap-[60px]'>
           {propertyData.map((item) => (
             <div key={item._id} className='flex flex-col gap-[35px]'>
@@ -85,4 +110,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default HomePage
