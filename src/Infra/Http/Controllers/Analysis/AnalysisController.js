@@ -25,8 +25,7 @@ export default class AnalysisController extends Controller {
     }
 
     const input = new CreateAnalysisUseCase.InputClass(data.id, data.idField, data.desiredBaseSaturation, data.currentBaseSaturation, data.totalCationExchangeCapacity, data.relativeTotalNeutralizingPower, data.isCalculateNpk, data.phosphor, data.potassium, data.expectedProductivity)
-    
-    console.log(input)
+
     const output = await this.createAnalysisUseCase.execute(input)
 
     return output

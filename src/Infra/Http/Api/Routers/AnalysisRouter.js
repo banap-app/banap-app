@@ -21,9 +21,7 @@ export default class AnalysisRouter {
     this.router.post('/create', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware),async (req, res) => {
       try {
         const httpRequest = new HttpRequest(req)
-        console.log('aaa')
         const result = await this.analysisController.handle(httpRequest)
-        console.log('bbbb')
         res.status(200).json(result)
       } catch (error) {
         return res.status(403).json({ error: error.message })

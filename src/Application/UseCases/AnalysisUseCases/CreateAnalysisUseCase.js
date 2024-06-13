@@ -55,11 +55,10 @@ export default class CreateAnalysisUseCase extends UseCase {
     } else {
       try {
         const analysis = new Analysis(data.id, data.idField, data.desiredBaseSaturation, data.currentBaseSaturation, data.totalCationExchangeCapacity, data.relativeTotalNeutralizingPower)
-
-        const resultCalculateNpk = analysis.calculateNPK(data.phosphorus, data.potassium, data.expectedProductivity)
-        console.log(analysis.to_dict())
+        analysis.calculateLiming()
+        analysis.calculateNPK(data.phosphor, data.potassium, data.expectedProductivity)
         const output = this.analysisRepository.save(analysis)
-        return new CreateAnalysisUseCase.OutputClass(true, 'Success on create analysis', analysis)
+        return new CreateAnalysisUseCase.OutputClass(true, 'Success on create analysis', analysis.to_dict())
       } catch (e) {
         return new CreateAnalysisUseCase.OutputClass(false, 'Error on create analysis', '')
       }

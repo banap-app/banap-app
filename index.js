@@ -9,7 +9,7 @@ import figlet from 'figlet'
 import AnalysisRouterFactory from './src/Infra/Factory/Analysis/AnalysisRouterFactory.js'
 
 const app = express()
-const PORT = 3000
+const PORT = process.env.PORT_APP || 55054
 
 // Cria uma instância de UserRouter usando a fábrica
 const userRouter = UserRouterFactory.create()
