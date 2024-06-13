@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
-  Route,
   RouterProvider,
   Navigate,
   Outlet,
@@ -14,14 +13,14 @@ import InitialPage from './pages/InitialPage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import HomePage from './pages/HomePage.jsx'
-import PropertyRegister from './pages/PropertyRegisterPage.jsx'
+import PropertyCreate from './pages/PropertyCreatePage.jsx'
 import Property from './pages/Property.jsx'
-import FieldRegisterPage from './pages/FieldRegisterPage.jsx'
+import FieldCreatePage from './pages/FieldCreatePage.jsx'
 import FieldPage from './pages/FieldPage.jsx'
 import LimingCalcPage from './pages/LimingCalcPage.jsx'
 import LimingResultPage from './pages/LimingResultPage.jsx'
-import NPKResultPage from './pages/NPKResultPage.jsx'
-import NPKCalcPage from './pages/NPKCalcPage.jsx'
+import NpkResultPage from './pages/NpkResultPage.jsx'
+import NpkCalcPage from './pages/NpkCalcPage.jsx'
 
 const ProtectedRoutes = () => {
   const token = localStorage.getItem('token')
@@ -42,14 +41,14 @@ const router = createBrowserRouter([
         element: <ProtectedRoutes />,
         children: [
           { path: 'home', element: <HomePage /> },
-          { path: 'property/create', element: <PropertyRegister /> },
+          { path: 'property/create', element: <PropertyCreate /> },
           { path: 'property', element: <Property /> },
-          { path: 'field/register/:id', element: <FieldRegisterPage /> },
+          { path: 'field/create/:id', element: <FieldCreatePage /> },
           { path: 'field', element: <FieldPage /> },
           { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
           { path: 'analysis/liming/result', element: <LimingResultPage /> },
-          { path: 'analysis/npk/calc', element: <NPKCalcPage /> },
-          { path: 'analysis/npk/result', element: <NPKResultPage /> },
+          { path: 'analysis/npk/calc', element: <NpkCalcPage /> },
+          { path: 'analysis/npk/result', element: <NpkResultPage /> },
         ],
       },
     ],

@@ -1,7 +1,7 @@
 import { ArrowLeft } from 'lucide-react'
 import { NPKResultImage, RegisterUpperLines } from '../assets/PagesAssets'
 
-const NPKResultPage = () => {
+const NpkResultPage = () => {
   return (
     <div className='relative flex h-[1080px] w-full flex-col items-center justify-center'>
       <div className='absolute left-[30px] top-[40px]'>
@@ -77,4 +77,4 @@ const NPKResultPage = () => {
   )
 }
 
-export default NPKResultPage
+export default NpkResultPage

@@ -4,7 +4,7 @@ import { RegisterUpperLines, RegisterLowerLines } from '../assets/PagesAssets'
 import { useState } from 'react'
 import { customFetch } from '../utils/api'
 
-const PropertyRegister = () => {
+const PropertyCreate = () => {
   const navigate = useNavigate()
   const [name, setPropertyName] = useState('')
 
@@ -72,4 +72,4 @@ const PropertyRegister = () => {
   )
 }
 
-export default PropertyRegister
+export default PropertyCreate

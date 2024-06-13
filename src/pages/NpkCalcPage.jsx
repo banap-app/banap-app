@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { RegisterUpperLines } from '../assets/PagesAssets'
 
-const NPKCalcPage = () => {
+const NpkCalcPage = () => {
   const navigate = useNavigate()
 
   return (
@@ -77,4 +77,4 @@ const NPKCalcPage = () => {
   )
 }
 
-export default NPKCalcPage
+export default NpkCalcPage

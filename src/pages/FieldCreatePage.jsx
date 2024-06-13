@@ -4,7 +4,7 @@ import { RegisterUpperLines } from '../assets/PagesAssets'
 import { useState } from 'react'
 import { customFetch } from '../utils/api'
 
-const FieldRegisterPage = () => {
+const FieldCreatePage = () => {
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [firstCoordinate, setFirstCoordinate] = useState(0)
@@ -287,4 +287,4 @@ const FieldRegisterPage = () => {
   }
 }
 
-export default FieldRegisterPage
+export default FieldCreatePage
