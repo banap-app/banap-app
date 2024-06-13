@@ -19,36 +19,11 @@ const RegisterPage = () => {
         password,
         active: true,
       })
-
-      if (response.status === 200) {
-        navigate('/login')
-      }
+      navigate('/login')
     } catch (error) {
-      console.error('Error:', error)
+      console.error('Erro:', error)
     }
   }
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const response = await fetch('http://localhost:3000/user/create', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       name,
-  //       email,
-  //       password,
-  //       active: true,
-  //     }),
-  //   })
-
-  //   if (response.status === 200) {
-  //     navigate('/login')
-  //   } else {
-  //     alert('Erro ao cadastrar')
-  //   }
-  // }
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>

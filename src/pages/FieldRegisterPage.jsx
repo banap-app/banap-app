@@ -2,6 +2,7 @@ import { ArrowLeft } from 'lucide-react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { RegisterUpperLines } from '../assets/PagesAssets'
 import { useState } from 'react'
+import { customFetch } from '../utils/api'
 
 const FieldRegisterPage = () => {
   const navigate = useNavigate()
@@ -15,31 +16,52 @@ const FieldRegisterPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:3000/field/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
+    try {
+      const response = await customFetch('/field/create', 'POST', true, {
         idProperty: id,
         name,
-        photo: '',
+        photo: 'aa',
         description,
         cultureOfPlants,
         firstCoordinate: Number(firstCoordinate),
         secondCoordinate: Number(secondCoordinate),
         thirdCoordinate: Number(thirdCoordinate),
         fourthCoordinate: Number(fourthCoordinate),
-      }),
-    })
-    console.log(await response.json())
-    if (response.status === 200) {
+      })
+      console.log(await response)
       navigate('/home')
-    } else {
-      alert('Erro ao cadastrar talhão.')
+    } catch (error) {
+      console.error('Erro:', error)
     }
   }
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
+  //   const response = await fetch('http://localhost:3000/field/create', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       authorization: localStorage.getItem('token'),
+  //     },
+  //     body: JSON.stringify({
+  //       idProperty: id,
+  //       name,
+  //       photo: '',
+  //       description,
+  //       cultureOfPlants,
+  //       firstCoordinate: Number(firstCoordinate),
+  //       secondCoordinate: Number(secondCoordinate),
+  //       thirdCoordinate: Number(thirdCoordinate),
+  //       fourthCoordinate: Number(fourthCoordinate),
+  //     }),
+  //   })
+  //   console.log(await response.json())
+  //   if (response.status === 200) {
+  //     navigate('/home')
+  //   } else {
+  //     alert('Erro ao cadastrar talhão.')
+  //   }
+  // }
 
   let { id } = useParams()
 

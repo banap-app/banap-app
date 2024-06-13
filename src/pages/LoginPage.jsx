@@ -24,6 +24,7 @@ const LoginPage = () => {
       })
 
       if (response.token) {
+        console.log(response.token)
         localStorage.setItem('token', response.token)
         navigate('/home')
       }

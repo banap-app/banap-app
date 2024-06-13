@@ -36,6 +36,7 @@ export async function customFetch(
       throw new Error(`HTTP error: ${response.status}`)
     }
     const responseData = await response.json()
+    console.log(responseData)
     return responseData
   } catch (error) {
     console.error('Error fetching data:', error)

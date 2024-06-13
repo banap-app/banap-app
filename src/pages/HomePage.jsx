@@ -1,10 +1,17 @@
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, redirect } from 'react-router-dom'
 import { LeaveIcon, MainPageLines } from '../assets/PagesAssets'
 import { Bell, ChevronRight, Plus } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { customFetch } from '../utils/api'
 
 const ProfileDropdown = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate()
+
+  const logout = () => {
+    localStorage.removeItem('token')
+    navigate('/')
+  }
+
   return (
     <div
       role='menu'
@@ -13,6 +20,7 @@ const ProfileDropdown = ({ isOpen, setIsOpen }) => {
       className={`absolute right-[0px] top-[50px] z-20 flex h-[56px] w-[153px] items-center justify-center rounded-[12px] border bg-white ${!isOpen && 'hidden'}`}
     >
       <button
+        onClick={logout}
         role='menuitem'
         className='h-[40px] w-[136px] rounded-[9px] border-none bg-[#121212] bg-opacity-15'
       >
@@ -71,7 +79,7 @@ const HomePage = () => {
       <div className='absolute top-[105px] z-10'>
         <MainPageLines />
       </div>
-      {loading ? (
+      {!loading ? (
         <div className='absolute top-[150px] flex w-[330px] flex-col gap-[60px]'>
           {propertyData.map((item) => (
             <div key={item._id} className='flex flex-col gap-[35px]'>

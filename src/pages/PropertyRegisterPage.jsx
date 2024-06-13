@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import { RegisterUpperLines, RegisterLowerLines } from '../assets/PagesAssets'
 import { useState } from 'react'
+import { customFetch } from '../utils/api'
 
 const PropertyRegister = () => {
   const navigate = useNavigate()
@@ -9,20 +10,13 @@ const PropertyRegister = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:3000/property/create', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        authorization: localStorage.getItem('token'),
-      },
-      body: JSON.stringify({
+    try {
+      const response = await customFetch('/property/create', 'POST', true, {
         name,
-      }),
-    })
-    if (response.status === 200) {
+      })
       navigate('/home')
-    } else {
-      alert('Erro ao cadastrar')
+    } catch (error) {
+      console.error('Erro:', error)
     }
   }
 

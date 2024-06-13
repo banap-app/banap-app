@@ -1,6 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Navigate,
+  Outlet,
+} from 'react-router-dom'
 import './index.css'
 import Frame from './components/Frame.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
@@ -17,6 +23,11 @@ import LimingResultPage from './pages/LimingResultPage.jsx'
 import NPKResultPage from './pages/NPKResultPage.jsx'
 import NPKCalcPage from './pages/NPKCalcPage.jsx'
 
+const ProtectedRoutes = () => {
+  const token = localStorage.getItem('token')
+  return token ? <Outlet /> : <Navigate to='/login' replace />
+}
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,15 +37,21 @@ const router = createBrowserRouter([
       { index: true, element: <InitialPage /> },
       { path: 'login', element: <LoginPage /> },
       { path: 'register', element: <RegisterPage /> },
-      { path: 'home', element: <HomePage /> },
-      { path: 'property/create', element: <PropertyRegister /> },
-      { path: 'property', element: <Property /> },
-      { path: 'field/register/:id', element: <FieldRegisterPage /> },
-      { path: 'field', element: <FieldPage /> },
-      { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
-      { path: 'analysis/liming/result', element: <LimingResultPage /> },
-      { path: 'analysis/npk/calc', element: <NPKCalcPage /> },
-      { path: 'analysis/npk/result', element: <NPKResultPage /> },
+      {
+        path: '/',
+        element: <ProtectedRoutes />,
+        children: [
+          { path: 'home', element: <HomePage /> },
+          { path: 'property/create', element: <PropertyRegister /> },
+          { path: 'property', element: <Property /> },
+          { path: 'field/register/:id', element: <FieldRegisterPage /> },
+          { path: 'field', element: <FieldPage /> },
+          { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
+          { path: 'analysis/liming/result', element: <LimingResultPage /> },
+          { path: 'analysis/npk/calc', element: <NPKCalcPage /> },
+          { path: 'analysis/npk/result', element: <NPKResultPage /> },
+        ],
+      },
     ],
   },
 ])
