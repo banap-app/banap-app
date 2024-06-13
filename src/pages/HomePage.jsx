@@ -79,7 +79,7 @@ const HomePage = () => {
       <div className='absolute top-[105px] z-10'>
         <MainPageLines />
       </div>
-      {!loading ? (
+      {propertyData.length !== 0 ? (
         <div className='absolute top-[150px] flex w-[330px] flex-col gap-[60px]'>
           {propertyData.map((item) => (
             <div key={item._id} className='flex flex-col gap-[35px]'>
