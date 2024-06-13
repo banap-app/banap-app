@@ -90,7 +90,7 @@ const HomePage = () => {
                 <ChevronRight color='#1a5d1a' />
               </div>
               <div className='flex gap-[25px]'>
-                <Link to={`/field/register/${item._id}`}>
+                <Link to={`/field/create/${item._id}`}>
                   <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>
                     <Plus color='#bdbdbd' size={'50px'} />
                   </div>
