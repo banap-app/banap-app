@@ -20,7 +20,7 @@ const FieldCreatePage = () => {
       const response = await customFetch('/field/create', 'POST', true, {
         idProperty: id,
         name,
-        photo: 'aa',
+        photo: 'Default',
         description,
         cultureOfPlants,
         firstCoordinate: Number(firstCoordinate),

@@ -41,9 +41,8 @@ const HomePage = () => {
   const navigate = useNavigate()
 
   async function fetchData() {
-    isLoading(true)
-
     try {
+      isLoading(true)
       const propertyData = await customFetch('/property/allProperties', 'GET')
       console.log('Fetched data: ', propertyData.property)
       setPropertyData(propertyData.property)
@@ -51,6 +50,7 @@ const HomePage = () => {
       const userData = await customFetch('/user/get', 'GET')
       console.log('Fetched data: ', userData.name)
       setUserName(userData.name)
+      isLoading(false)
     } catch (error) {
       console.error('Error fetching data', error)
     } finally {
