@@ -63,6 +63,25 @@ const HomePage = () => {
     }
   }
 
+  async function fetchFields(propertyId) {
+    try {
+      const fieldData = await customFetch('/field/allFields', 'POST', true, {
+        propertyId,
+      })
+      console.log('Field data: ', fieldData)
+    } catch (error) {
+      console.error('Error fetching data', error)
+    }
+  }
+
+  for (const key in propertyData) {
+    if (propertyData.hasOwnProperty(key)) {
+      const property = propertyData[key]
+      const propertyId = property._id
+      fetchFields(propertyId)
+    }
+  }
+
   useEffect(() => {
     fetchData()
     if (!localStorage.getItem('hasShownToast')) {

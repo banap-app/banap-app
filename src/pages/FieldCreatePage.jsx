@@ -14,6 +14,8 @@ const FieldCreatePage = () => {
   const [description, setDescription] = useState('')
   const [cultureOfPlants, setCultureOfPlants] = useState('')
 
+  let { id } = useParams()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -34,36 +36,6 @@ const FieldCreatePage = () => {
       console.error('Erro:', error)
     }
   }
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault()
-  //   const response = await fetch('http://localhost:3000/field/create', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       authorization: localStorage.getItem('token'),
-  //     },
-  //     body: JSON.stringify({
-  //       idProperty: id,
-  //       name,
-  //       photo: '',
-  //       description,
-  //       cultureOfPlants,
-  //       firstCoordinate: Number(firstCoordinate),
-  //       secondCoordinate: Number(secondCoordinate),
-  //       thirdCoordinate: Number(thirdCoordinate),
-  //       fourthCoordinate: Number(fourthCoordinate),
-  //     }),
-  //   })
-  //   console.log(await response.json())
-  //   if (response.status === 200) {
-  //     navigate('/home')
-  //   } else {
-  //     alert('Erro ao cadastrar talhão.')
-  //   }
-  // }
-
-  let { id } = useParams()
 
   const [page, setPage] = useState(0)
 
