@@ -1,14 +1,17 @@
 import { useNavigate, Link, redirect } from 'react-router-dom'
 import { LeaveIcon, MainPageLines } from '../assets/PagesAssets'
 import { Bell, ChevronRight, Plus } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import React, { StrictMode, useEffect, useState } from 'react'
 import { customFetch } from '../utils/api'
+import { Toaster, toast } from 'sonner'
 
 const ProfileDropdown = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate()
 
   const logout = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('hasShownToast')
+    localStorage.removeItem('hasPropertyCreated')
     navigate('/')
   }
 
@@ -19,6 +22,7 @@ const ProfileDropdown = ({ isOpen, setIsOpen }) => {
       aria-labelledby='user-menu-button'
       className={`absolute right-[0px] top-[50px] z-20 flex h-[56px] w-[153px] items-center justify-center rounded-[12px] border bg-white ${!isOpen && 'hidden'}`}
     >
+
       <button
         onClick={logout}
         role='menuitem'
@@ -34,6 +38,7 @@ const ProfileDropdown = ({ isOpen, setIsOpen }) => {
 }
 
 const HomePage = () => {
+  let count = 0
   const [isOpen, setIsOpen] = useState(false)
   const [propertyData, setPropertyData] = useState([])
   const [userName, setUserName] = useState('Usuário')
@@ -60,10 +65,26 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchData()
+    if (!localStorage.getItem('hasShownToast')) {
+      toast.success('Usuário logado', {duration:1450, position:"top-center",classNames : {
+        toast: 'bg-white',
+        title: 'text-green-700',
+        actionButton: 'bg-green-700',
+        description: 'text-green-700',
+        cancelButton: 'bg-orange-400',
+        closeButton: 'bg-lime-400',
+        success: 'text-green-700'
+      }})
+
+      localStorage.setItem('hasShownToast',true)
+    }
+
+    
   }, [])
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
+      <Toaster />
       <div className='absolute top-[40px] flex w-[320px] flex-row items-center justify-between'>
         <p className='text-base font-bold'>
           Olá, <span className='text-banap-light'>{userName}</span>
