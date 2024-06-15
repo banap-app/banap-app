@@ -138,9 +138,10 @@ const HomePage = () => {
                 </p>
                 <ChevronRight color='#1a5d1a' />
               </div>
-              {fieldData != null && fieldData.length ? (
+              {fieldData !== null && fieldData.length !== 0 ? (
                 <div className='no-scrollbar flex gap-[25px] overflow-scroll'>
                   {fieldData.map((field) => (
+                    <Link to={`/field/${field._id}`}>
                     <div className='h-[178px] w-[124px] rounded-[15px] bg-transparent'>
                       <div className='h-[148px] w-[124px] rounded-t-[15px] bg-[#d9d9d9]'></div>
                       <div className='flex h-[30px] w-[124px] items-center justify-center rounded-b-[15px] bg-banap-light'>
@@ -149,6 +150,7 @@ const HomePage = () => {
                         </p>
                       </div>
                     </div>
+                    </Link>
                   ))}
                   <Link to={`/field/create/${item._id}`}>
                     <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>

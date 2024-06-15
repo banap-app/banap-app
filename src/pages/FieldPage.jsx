@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import {
   RegisterUpperLines,
   FieldIcon,
@@ -7,13 +7,32 @@ import {
 } from '../assets/PagesAssets'
 import { ArrowLeft, Trash2, Pen, Plus, FileText } from 'lucide-react'
 import DeleteModal from '../components/DeleteModal'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { customFetch } from '../utils/api'
 
 const FieldPage = () => {
+  let { id } = useParams()
+
   const navigate = useNavigate()
 
   const [isModalVisible, setModalVisible] = useState(false)
+  const [fieldData, setFieldData] = useState([])
 
+  
+  async function fetchField() {
+    try {
+      const fieldData = await customFetch(`/field/getField/${id}`, 'GET', true)
+      setFieldData(fieldData.field)
+    } catch (error) {
+      console.error('Error fetching data', error)
+    }
+  }
+  
+  
+  useEffect(() => {
+    fetchField()
+  }, [])
+  
   const openModal = () => {
     setModalVisible(true)
   }
@@ -38,7 +57,7 @@ const FieldPage = () => {
           <div className='flex items-center justify-center gap-[10px]'>
             <FieldIcon />
             <p className='text-[28px] font-extrabold text-banap-dark'>
-              Talhão 01
+              {fieldData.name}
             </p>
           </div>
           <div className='flex flex-col gap-[20px]'>
@@ -47,7 +66,7 @@ const FieldPage = () => {
               <div className='flex items-center gap-[10px] p-[15px]'>
                 <PlantIcon />
                 <p className='text-base font-bold text-banap-light'>
-                  Banana nanica
+                  {fieldData.cultureOfPlants}
                 </p>
               </div>
             </div>
@@ -72,8 +91,7 @@ const FieldPage = () => {
               </p>
             </div>
             <p className='font-regular text-justify text-base'>
-              Esse talhão fica perto da cerca ao leste da fazenda, ao lado de
-              outros talhões de banana prata.
+              {fieldData.description}
             </p>
           </div>
           <div className='flex w-[330px] flex-col gap-[5px]'>
@@ -102,7 +120,7 @@ const FieldPage = () => {
           </div>
         </div>
       </div>
-      <DeleteModal visible={isModalVisible} closeModal={closeModal} />
+      <DeleteModal visible={isModalVisible} closeModal={closeModal} fieldId={fieldData._id} />
     </div>
   )
 }
