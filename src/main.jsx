@@ -16,6 +16,7 @@ import HomePage from './pages/HomePage.jsx'
 import PropertyCreate from './pages/PropertyCreatePage.jsx'
 import Property from './pages/Property.jsx'
 import FieldCreatePage from './pages/FieldCreatePage.jsx'
+import FieldUpdatePage from './pages/FieldUpdatePage.jsx'
 import FieldPage from './pages/FieldPage.jsx'
 import LimingCalcPage from './pages/LimingCalcPage.jsx'
 import LimingResultPage from './pages/LimingResultPage.jsx'
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
           { path: 'property/create', element: <PropertyCreate /> },
           { path: 'property', element: <Property /> },
           { path: 'field/create/:id', element: <FieldCreatePage /> },
+          { path: 'field/update/:id', element: <FieldUpdatePage />},
           { path: 'field/:id', element: <FieldPage /> },
           { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
           { path: 'analysis/liming/result', element: <LimingResultPage /> },
