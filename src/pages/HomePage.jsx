@@ -48,14 +48,16 @@ const HomePage = () => {
   async function fetchData() {
     try {
       isLoading(true)
-      const propertyData = await customFetch('/property/allProperties', 'GET')
-      console.log('Fetched data: ', propertyData.property)
-      setPropertyData(propertyData.property)
+      const propertyResult = await customFetch('/property/allProperties', 'GET')
+      /* console.log('Fetched data: ', propertyResult.property) */
+      setPropertyData(propertyResult.property)
+
 
       const userData = await customFetch('/user/get', 'GET')
-      console.log('Fetched data: ', userData.name)
+      /* console.log('Fetched data: ', userData.name) */
       setUserName(userData.name)
       isLoading(false)
+
     } catch (error) {
       console.error('Error fetching data', error)
     } finally {
@@ -68,26 +70,24 @@ const HomePage = () => {
       const fieldData = await customFetch('/field/allFields', 'POST', true, {
         propertyId,
       })
-      console.log('Field data: ', fieldData)
+      /* console.log('Field data: ', fieldData) */
       setFieldData(fieldData.fields)
+      console.log(fieldData)
     } catch (error) {
       console.error('Error fetching data', error)
     }
   }
 
   async function fieldsMapping() {
-    for await (const key of propertyData) {
-      console.log(key._id)
-      if (key._id) {
-        await fetchFields(key._id)
-      }
+    for (let i = 0; i < propertyData.length; i++) {
+      console.log(propertyData[i])
+      await fetchFields(propertyData[i]._id)
     }
   }
 
-  fieldsMapping()
-
   useEffect(() => {
     fetchData()
+    fieldsMapping()
 
     if (!localStorage.getItem('hasShownToast')) {
       toast.success('Usuário logado', {
@@ -106,7 +106,9 @@ const HomePage = () => {
 
       localStorage.setItem('hasShownToast', true)
     }
-  }, [])
+  }, [propertyData.length])
+
+  console.log(fieldData)
 
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -136,7 +138,7 @@ const HomePage = () => {
                 </p>
                 <ChevronRight color='#1a5d1a' />
               </div>
-              {fieldData.length !== 0 ? (
+              {fieldData != null && fieldData.length ? (
                 <div className='no-scrollbar flex gap-[25px] overflow-scroll'>
                   {fieldData.map((field) => (
                     <div className='h-[178px] w-[124px] rounded-[15px] bg-transparent'>
