@@ -1,16 +1,29 @@
 import { Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { customFetch } from '../utils/api'
 
-const DeleteModal = ({ visible, closeModal }) => {
+const DeleteModal = ({ visible, closeModal, fieldId }) => {
   const [isModalVisible, setModalVisible] = useState(visible)
+
+  async function deleteField() {
+    try {
+      const deleteField = await customFetch('/field/delete', 'DELETE', true, {
+        fieldId,
+      })
+    } catch (error) {
+      console.error('Error', error)
+    }
+  }
 
   useEffect(() => {
     setModalVisible(visible)
+    deleteField()
   }, [visible])
 
   if (!isModalVisible) {
     return null
   }
+
 
   return (
     <div

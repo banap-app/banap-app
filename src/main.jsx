@@ -44,7 +44,7 @@ const router = createBrowserRouter([
           { path: 'property/create', element: <PropertyCreate /> },
           { path: 'property', element: <Property /> },
           { path: 'field/create/:id', element: <FieldCreatePage /> },
-          { path: 'field', element: <FieldPage /> },
+          { path: 'field/:id', element: <FieldPage /> },
           { path: 'analysis/liming/calc', element: <LimingCalcPage /> },
           { path: 'analysis/liming/result', element: <LimingResultPage /> },
           { path: 'analysis/npk/calc', element: <NpkCalcPage /> },
