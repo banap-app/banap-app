@@ -18,7 +18,6 @@ const FieldPage = () => {
   const [isModalVisible, setModalVisible] = useState(false)
   const [fieldData, setFieldData] = useState([])
 
-  
   async function fetchField() {
     try {
       const fieldData = await customFetch(`/field/getField/${id}`, 'GET', true)
@@ -27,12 +26,11 @@ const FieldPage = () => {
       console.error('Error fetching data', error)
     }
   }
-  
-  
+
   useEffect(() => {
     fetchField()
   }, [])
-  
+
   const openModal = () => {
     setModalVisible(true)
   }
@@ -120,7 +118,11 @@ const FieldPage = () => {
           </div>
         </div>
       </div>
-      <DeleteModal visible={isModalVisible} closeModal={closeModal} fieldId={fieldData._id} />
+      <DeleteModal
+        visible={isModalVisible}
+        closeModal={closeModal}
+        fieldId={fieldData._id}
+      />
     </div>
   )
 }

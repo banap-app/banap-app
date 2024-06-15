@@ -1,8 +1,10 @@
 import { Trash2 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { customFetch } from '../utils/api'
+import { useNavigate } from 'react-router-dom'
 
 const DeleteModal = ({ visible, closeModal, fieldId }) => {
+  const navigate = useNavigate()
   const [isModalVisible, setModalVisible] = useState(visible)
 
   async function deleteField() {
@@ -12,18 +14,18 @@ const DeleteModal = ({ visible, closeModal, fieldId }) => {
       })
     } catch (error) {
       console.error('Error', error)
+    } finally {
+      navigate('/home')
     }
   }
 
   useEffect(() => {
     setModalVisible(visible)
-    deleteField()
   }, [visible])
 
   if (!isModalVisible) {
     return null
   }
-
 
   return (
     <div
@@ -45,7 +47,7 @@ const DeleteModal = ({ visible, closeModal, fieldId }) => {
             </div>
           </div>
           <div className='flex flex-col gap-[12px]'>
-            <button className='h-[54px] w-[260px] rounded-[10px] bg-[#c4302b] text-base font-extrabold text-white'>
+            <button onClick={() => deleteField()} className='h-[54px] w-[260px] rounded-[10px] bg-[#c4302b] text-base font-extrabold text-white'>
               Excluir
             </button>
             <button
