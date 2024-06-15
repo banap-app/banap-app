@@ -15,6 +15,6 @@ export default class MySqlConnection {
   }
 
   static async disconnect () {
-    return (await this.connect()).destroy
+    return (await this.connect()).destroy()
   }
 }

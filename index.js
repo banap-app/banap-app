@@ -29,10 +29,11 @@ app.use('/analysis', analysisRouter.getRouter())
 
 const spinner = ora({
   text: 'Iniciando o servidor...',
-  color: 'yellow',
+  color: 'magenta',
   spinner: 'dots8Bit'
 })
 spinner.start()
+
 
 // Adiciona um atraso de 3 segundos (3000 milissegundos)
 setTimeout(() => {
