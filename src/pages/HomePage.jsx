@@ -22,7 +22,6 @@ const ProfileDropdown = ({ isOpen, setIsOpen }) => {
       aria-labelledby='user-menu-button'
       className={`absolute right-[0px] top-[50px] z-20 flex h-[56px] w-[153px] items-center justify-center rounded-[12px] border bg-white ${!isOpen && 'hidden'}`}
     >
-
       <button
         onClick={logout}
         role='menuitem'
@@ -42,6 +41,7 @@ const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [propertyData, setPropertyData] = useState([])
   const [userName, setUserName] = useState('Usuário')
+  const [fieldData, setFieldData] = useState([])
   const [loading, isLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -69,36 +69,43 @@ const HomePage = () => {
         propertyId,
       })
       console.log('Field data: ', fieldData)
+      setFieldData(fieldData.fields)
     } catch (error) {
       console.error('Error fetching data', error)
     }
   }
 
-  for (const key in propertyData) {
-    if (propertyData.hasOwnProperty(key)) {
-      const property = propertyData[key]
-      const propertyId = property._id
-      fetchFields(propertyId)
+  async function fieldsMapping() {
+    for await (const key of propertyData) {
+      console.log(key._id)
+      if (key._id) {
+        await fetchFields(key._id)
+      }
     }
   }
 
+  fieldsMapping()
+
   useEffect(() => {
     fetchData()
+
     if (!localStorage.getItem('hasShownToast')) {
-      toast.success('Usuário logado', {duration:1450, position:"top-center",classNames : {
-        toast: 'bg-white',
-        title: 'text-green-700',
-        actionButton: 'bg-green-700',
-        description: 'text-green-700',
-        cancelButton: 'bg-orange-400',
-        closeButton: 'bg-lime-400',
-        success: 'text-green-700'
-      }})
+      toast.success('Usuário logado', {
+        duration: 1450,
+        position: 'top-center',
+        classNames: {
+          toast: 'bg-white',
+          title: 'text-green-700',
+          actionButton: 'bg-green-700',
+          description: 'text-green-700',
+          cancelButton: 'bg-orange-400',
+          closeButton: 'bg-lime-400',
+          success: 'text-green-700',
+        },
+      })
 
-      localStorage.setItem('hasShownToast',true)
+      localStorage.setItem('hasShownToast', true)
     }
-
-    
   }, [])
 
   return (
@@ -129,13 +136,33 @@ const HomePage = () => {
                 </p>
                 <ChevronRight color='#1a5d1a' />
               </div>
-              <div className='flex gap-[25px]'>
-                <Link to={`/field/create/${item._id}`}>
-                  <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>
-                    <Plus color='#bdbdbd' size={'50px'} />
-                  </div>
-                </Link>
-              </div>
+              {fieldData.length !== 0 ? (
+                <div className='no-scrollbar flex gap-[25px] overflow-scroll'>
+                  {fieldData.map((field) => (
+                    <div className='h-[178px] w-[124px] rounded-[15px] bg-transparent'>
+                      <div className='h-[148px] w-[124px] rounded-t-[15px] bg-[#d9d9d9]'></div>
+                      <div className='flex h-[30px] w-[124px] items-center justify-center rounded-b-[15px] bg-banap-light'>
+                        <p className='text-sm font-semibold text-white'>
+                          {field.name}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                  <Link to={`/field/create/${item._id}`}>
+                    <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>
+                      <Plus color='#bdbdbd' size={'50px'} />
+                    </div>
+                  </Link>
+                </div>
+              ) : (
+                <div className='flex gap-[25px]'>
+                  <Link to={`/field/create/${item._id}`}>
+                    <div className='flex h-[178px] w-[124px] items-center justify-center rounded-[15px] bg-[#d9d9d9]'>
+                      <Plus color='#bdbdbd' size={'50px'} />
+                    </div>
+                  </Link>
+                </div>
+              )}
             </div>
           ))}
         </div>

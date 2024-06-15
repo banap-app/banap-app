@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
-import {Toaster, toast} from 'sonner'
+import { Toaster, toast } from 'sonner'
 import {
   LoginUpperLines,
   LoginLowerLines,
@@ -64,7 +64,11 @@ const LoginPage = () => {
             Entre com sua<br></br>conta!
           </p>
         </div>
-        <form onSubmit={(e) => {handleSubmit(e)}}>
+        <form
+          onSubmit={(e) => {
+            handleSubmit(e)
+          }}
+        >
           <div className='h-auto w-[244px]'>
             <div className='flex flex-col gap-5'>
               <div className='flex flex-col gap-2.5'>
