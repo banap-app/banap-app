@@ -47,7 +47,10 @@ const DeleteModal = ({ visible, closeModal, fieldId }) => {
             </div>
           </div>
           <div className='flex flex-col gap-[12px]'>
-            <button onClick={() => deleteField()} className='h-[54px] w-[260px] rounded-[10px] bg-[#c4302b] text-base font-extrabold text-white'>
+            <button
+              onClick={() => deleteField()}
+              className='h-[54px] w-[260px] rounded-[10px] bg-[#c4302b] text-base font-extrabold text-white'
+            >
               Excluir
             </button>
             <button
