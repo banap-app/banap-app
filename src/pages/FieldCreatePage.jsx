@@ -24,7 +24,7 @@ const FieldCreatePage = () => {
         name,
         photo: 'Default',
         description,
-        cultureOfPlants,
+        cultureOfPlants: 'Banana Prata',
         firstCoordinate: Number(firstCoordinate),
         secondCoordinate: Number(secondCoordinate),
         thirdCoordinate: Number(thirdCoordinate),
@@ -240,6 +240,18 @@ const FieldCreatePage = () => {
                       className='bg-white text-black'
                     >
                       Banana da Terra
+                    </option>
+                    <option
+                      value='Banana Nanica'
+                      className='bg-white text-black'
+                    >
+                      Banana Nanica
+                    </option>
+                    <option value='Banana Ouro' className='bg-white text-black'>
+                      Banana Ouro
+                    </option>
+                    <option value='Banana Maçã' className='bg-white text-black'>
+                      Banana Maçã
                     </option>
                   </select>
                 </div>

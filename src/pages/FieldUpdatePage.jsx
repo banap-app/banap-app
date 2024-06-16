@@ -1,6 +1,5 @@
 const FieldUpdatePage = () => {
-    return 
+  return
 }
 
 export default FieldUpdatePage
-
