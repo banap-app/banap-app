@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   RegisterUpperLines,
   FieldIcon,
@@ -111,10 +111,10 @@ const FieldPage = () => {
             </p>
           </div>
           <div className='flex w-[330px] items-center justify-center'>
-            <button className='flex h-[56px] w-[177px] items-center justify-center gap-[10px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
+            <Link to={"/analysis/liming/calc"} state={{idField: fieldData._id}} className='flex h-[56px] w-[177px] items-center justify-center gap-[10px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'>
               <Plus />
               Nova Análise
-            </button>
+            </Link>
           </div>
         </div>
       </div>
