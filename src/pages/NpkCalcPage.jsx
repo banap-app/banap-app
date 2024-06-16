@@ -9,17 +9,17 @@ const NpkCalcPage = () => {
   const [phospor, setPhospor] = useState(0)
   const [potassium, setPotassium] = useState(0)
   const [expectedProductivity, setExpectedProductivity] = useState(51)
-  const {state} = useLocation()
-  console.log(state)
+  const { state } = useLocation()
+  const data = state.data
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const response = customFetch('/analysis/create', 'POST', true, {
-
+        ...data, isCalculateNpk: true, phospor, potassium, expectedProductivity
       })
     }
-    catch {
+    catch (error){
 
     }
   }
@@ -59,7 +59,7 @@ const NpkCalcPage = () => {
                 <input
                   type='text'
                   className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                  onChange={(e)=>setPhospor(e.target.value)}/>
+                  onChange={(e) => setPhospor(e.target.value)} />
               </div>
               <div className='flex flex-col gap-[22px]'>
                 <label htmlFor='' className='text-lg font-medium'>
@@ -68,13 +68,13 @@ const NpkCalcPage = () => {
                 <input
                   type='text'
                   className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                  onChange={(e)=>setPotassium(e.target.value)}/>
+                  onChange={(e) => setPotassium(e.target.value)} />
               </div>
               <div className='flex flex-col gap-[22px]'>
                 <label htmlFor='' className='text-lg font-medium'>
                   Produtividade esperada
                 </label>
-                <select onChange={(e)=>setExpectedProductivity(e.target.value)} className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'>
+                <select onChange={(e) => setExpectedProductivity(e.target.value)} className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'>
                   <option value='19' >Menor que 20%</option>
                   <option value='21'>Entre 20% e 30%</option>
                   <option value='39'>Entre 30% e 40%</option>

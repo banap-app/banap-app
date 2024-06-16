@@ -23,14 +23,30 @@ const LoginPage = () => {
         email,
         password,
       })
-
+      if (!response.success) {
+        toast.error('Usuário ou senha errados', {
+          duration: 1450,
+          position: 'top-center',
+          classNames: {
+            toast: 'bg-white',
+            title: 'text-red-700',
+            actionButton: 'bg-red-800',
+            description: 'text-red-800',
+            cancelButton: 'bg-orange-400',
+            closeButton: 'bg-red-800',
+            error: 'text-red-900',
+          },
+        })
+      }
       if (response.token) {
         console.log(response.token)
         localStorage.setItem('token', response.token)
         navigate('/home')
       }
+
     } catch (error) {
-      console.error('Error:', error)
+      console.error(error)
+      console.log();
     }
   }
 

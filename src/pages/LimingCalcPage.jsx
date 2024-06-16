@@ -16,7 +16,7 @@ const LimingCalcPage = () => {
     e.preventDefault()
 
     try {
-      const data = {
+      let data = {
         currentBaseSaturation: Number(currentBaseSaturation),
         totalCationExchangeCapacity: Number(CTC),
         relativeTotalNeutralizingPower: Number(PRNT),
@@ -27,7 +27,7 @@ const LimingCalcPage = () => {
       console.log(await response)
 
       if (response.success) {
-        localStorage.setItem('analysis', JSON.stringify(data))
+        data.liming = response.analysis.liming
         navigate('/analysis/liming/result', { state: { success: response.success, data:data } })
       }
     } catch (e) {

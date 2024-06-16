@@ -17,7 +17,7 @@ const LimingResultPage = () => {
     }
   }, [success])
  
-
+  console.log(data);
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
       <Toaster />
@@ -49,8 +49,8 @@ const LimingResultPage = () => {
             Calcário
           </p>
           <div className='bottom-[0px] flex h-[47px] w-[148px] items-center justify-center rounded-[10px] border-white bg-white'>
-            <p className='text-center text-[24px] font-extrabold text-banap-light'>
-              6.550kg/h
+            <p className='text-center text-[22px] font-extrabold text-banap-light'>
+             {data.liming.toFixed(1)} kg/h
             </p>
           </div>
         </div>

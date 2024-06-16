@@ -32,12 +32,14 @@ export async function customFetch(
       `${process.env.APP_API_URL}${url}`,
       requestOptions
     )
+
     if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`)
+      return await response.json()
+    } else {
+      const responseData = await response.json()
+      return responseData
     }
-    const responseData = await response.json()
-    console.log(responseData)
-    return responseData
+
   } catch (error) {
     console.error('Error fetching data:', error)
     throw error
