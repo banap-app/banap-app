@@ -21,14 +21,16 @@ const LimingCalcPage = () => {
         totalCationExchangeCapacity: Number(CTC),
         relativeTotalNeutralizingPower: Number(PRNT),
         desiredBaseSaturation: 10,
-        idField: state.idField
+        idField: state.idField,
       }
       const response = await customFetch('/analysis/create', 'POST', true, data)
       console.log(await response)
 
       if (response.success) {
         data.liming = response.analysis.liming
-        navigate('/analysis/liming/result', { state: { success: response.success, data:data } })
+        navigate('/analysis/liming/result', {
+          state: { success: response.success, data: data },
+        })
       }
     } catch (e) {
       console.error(e)
@@ -71,7 +73,8 @@ const LimingCalcPage = () => {
                   <input
                     type='text'
                     className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                    onChange={(e) => setCurrentBaseSaturation(e.target.value)} />
+                    onChange={(e) => setCurrentBaseSaturation(e.target.value)}
+                  />
                 </div>
                 <div className='flex flex-col gap-[22px]'>
                   <label className='text-lg font-medium'>CTC</label>
