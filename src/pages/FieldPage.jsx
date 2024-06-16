@@ -5,10 +5,11 @@ import {
   PlantIcon,
   Troubleshoot,
 } from '../assets/PagesAssets'
-import { ArrowLeft, Trash2, Pen, Plus, FileText } from 'lucide-react'
+import { ArrowLeft, Trash2, Pen, Plus, FileText, RotateCw } from 'lucide-react'
 import DeleteModal from '../components/DeleteModal'
 import { useEffect, useState } from 'react'
 import { customFetch } from '../utils/api'
+import FieldImage from '../assets/imgs/FieldImage.png'
 
 const FieldPage = () => {
   let { id } = useParams()
@@ -59,8 +60,17 @@ const FieldPage = () => {
             </p>
           </div>
           <div className='flex flex-col gap-[20px]'>
-            <div className='h-[320px] w-[330px] rounded-[10px] shadow-md'>
-              <div className='h-[270px] w-[330px] rounded-[10px] bg-slate-400 shadow-md'></div>
+            <div className='relative h-[320px] w-[330px] rounded-[10px] shadow-md'>
+              <img
+                src={FieldImage}
+                className='w-[330px] rounded-[13px] shadow-md'
+              />
+              <button
+                onClick={() => console.log('rotate')}
+                className='absolute right-[10px] top-[10px] opacity-0 hover:opacity-100'
+              >
+                <RotateCw strokeWidth='2px' color='white' />
+              </button>
               <div className='flex items-center gap-[10px] p-[15px]'>
                 <PlantIcon />
                 <p className='text-base font-bold text-banap-light'>
