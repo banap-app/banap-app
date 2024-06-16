@@ -6,17 +6,17 @@ import { useEffect } from 'react'
 
 const LimingResultPage = () => {
   const navigate = useNavigate()
-  const {state} = useLocation()
+  const { state } = useLocation()
   const success = state.success
   const data = state.data
   let count = 0;
-  useEffect(()=>{
+  useEffect(() => {
     if (success && count == 0) {
-      toast.success('Calculado o calcário com sucesso', {position:"top-center"})
+      toast.success('Calculado o calcário com sucesso', { position: "top-center" })
       count = 1
     }
   }, [success])
- 
+
   console.log(data);
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -50,11 +50,11 @@ const LimingResultPage = () => {
           </p>
           <div className='bottom-[0px] flex h-[47px] w-[148px] items-center justify-center rounded-[10px] border-white bg-white'>
             <p className='text-center text-[22px] font-extrabold text-banap-light'>
-             {data.liming.toFixed(1)} kg/h
+              {data.liming.toFixed(1)} kg/h
             </p>
           </div>
         </div>
-        <Link className='flex justify-center items-center h-[38px] w-[243px] rounded-[5px] bg-banap-light text-sm font-extrabold text-white' to={'/analysis/npk/calc'} state={{data:data}}>
+        <Link className='flex justify-center items-center h-[38px] w-[243px] rounded-[5px] bg-banap-light text-sm font-extrabold text-white' to={'/analysis/npk/calc'} state={{ data: data }}>
           Registrar cálculo
         </Link>
       </div>

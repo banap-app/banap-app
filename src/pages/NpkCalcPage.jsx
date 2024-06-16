@@ -19,7 +19,7 @@ const NpkCalcPage = () => {
         ...data, isCalculateNpk: true, phospor, potassium, expectedProductivity
       })
     }
-    catch (error){
+    catch (error) {
 
     }
   }
