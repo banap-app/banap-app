@@ -10,13 +10,13 @@ const LimingResultPage = () => {
   const success = state.success
   const data = state.data
   let count = 0;
-  useEffect(() => {
+  useEffect(()=>{
     if (success && count == 0) {
-      toast.success('Calculado o calcário com sucesso', { position: "top-center" })
+      toast.success('Calculado o calcário com sucesso', {position:"top-center"})
       count = 1
     }
   }, [success])
-
+ 
   console.log(data);
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -54,7 +54,7 @@ const LimingResultPage = () => {
             </p>
           </div>
         </div>
-        <Link className='flex justify-center items-center h-[38px] w-[243px] rounded-[5px] bg-banap-light text-sm font-extrabold text-white' to={'/analysis/npk/calc'} state={{ data: data }}>
+        <Link className='flex justify-center items-center h-[38px] w-[243px] rounded-[5px] bg-banap-light text-sm font-extrabold text-white' to={'/analysis/npk/calc'} state={{data:data}}>
           Registrar cálculo
         </Link>
       </div>

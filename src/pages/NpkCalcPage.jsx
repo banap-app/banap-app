@@ -16,12 +16,20 @@ const NpkCalcPage = () => {
     e.preventDefault()
     try {
       const response = customFetch('/analysis/create', 'POST', true, {
-        ...data, isCalculateNpk: true, phospor, potassium, expectedProductivity
+        ...data,
+        isCalculateNpk: true,
+        phospor,
+        potassium,
+        expectedProductivity,
       })
+<<<<<<< HEAD
     }
     catch (error) {
 
     }
+=======
+    } catch (error) {}
+>>>>>>> 83118e1a8e52ba8852eced2d023c3413bc05f2e5
   }
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -59,7 +67,8 @@ const NpkCalcPage = () => {
                 <input
                   type='text'
                   className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                  onChange={(e) => setPhospor(e.target.value)} />
+                  onChange={(e) => setPhospor(e.target.value)}
+                />
               </div>
               <div className='flex flex-col gap-[22px]'>
                 <label htmlFor='' className='text-lg font-medium'>
@@ -68,17 +77,21 @@ const NpkCalcPage = () => {
                 <input
                   type='text'
                   className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
-                  onChange={(e) => setPotassium(e.target.value)} />
+                  onChange={(e) => setPotassium(e.target.value)}
+                />
               </div>
               <div className='flex flex-col gap-[22px]'>
                 <label htmlFor='' className='text-lg font-medium'>
                   Produtividade esperada
                 </label>
-                <select onChange={(e) => setExpectedProductivity(e.target.value)} className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'>
-                  <option value='19' >Menor que 20%</option>
+                <select
+                  onChange={(e) => setExpectedProductivity(e.target.value)}
+                  className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
+                >
+                  <option value='19'>Menor que 20%</option>
                   <option value='21'>Entre 20% e 30%</option>
                   <option value='39'>Entre 30% e 40%</option>
-                  <option value='49' >Entre 40% e 50%</option>
+                  <option value='49'>Entre 40% e 50%</option>
                   <option value='51'>Maior que 50%</option>
                 </select>
               </div>

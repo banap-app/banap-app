@@ -167,6 +167,16 @@ const HomePage = () => {
               )}
             </div>
           ))}
+          <div className='flex w-[330px] items-center justify-end'>
+            <Link to={'/property/create'}>
+              <button className='h-[56px] w-[220px] rounded-[10px] bg-banap-light text-base font-extrabold text-white shadow-md'>
+                <div className='flex items-center justify-between px-[15px]'>
+                  <Plus />
+                  Nova Propriedade
+                </div>
+              </button>
+            </Link>
+          </div>
         </div>
       ) : (
         <div className='flex flex-col gap-10'>

@@ -39,7 +39,6 @@ export async function customFetch(
       const responseData = await response.json()
       return responseData
     }
-
   } catch (error) {
     console.error('Error fetching data:', error)
     throw error

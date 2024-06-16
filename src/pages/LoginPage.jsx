@@ -43,10 +43,9 @@ const LoginPage = () => {
         localStorage.setItem('token', response.token)
         navigate('/home')
       }
-
     } catch (error) {
       console.error(error)
-      console.log();
+      console.log()
     }
   }
 
