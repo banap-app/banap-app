@@ -88,19 +88,19 @@ const HomePage = () => {
     fieldsMapping()
 
     if (!localStorage.getItem('hasShownToast')) {
-        toast.success('Usuário logado', {
-          duration: 1450,
-          position: 'top-center',
-          classNames: {
-            toast: 'bg-white',
-            title: 'text-green-700',
-            actionButton: 'bg-green-700',
-            description: 'text-green-700',
-            cancelButton: 'bg-orange-400',
-            closeButton: 'bg-lime-400',
-            success: 'text-green-700',
-          },
-        })
+      toast.success('Usuário logado', {
+        duration: 1450,
+        position: 'top-center',
+        classNames: {
+          toast: 'bg-white',
+          title: 'text-green-700',
+          actionButton: 'bg-green-700',
+          description: 'text-green-700',
+          cancelButton: 'bg-orange-400',
+          closeButton: 'bg-lime-400',
+          success: 'text-green-700',
+        },
+      })
 
       localStorage.setItem('hasShownToast', true)
     }
@@ -138,7 +138,6 @@ const HomePage = () => {
               </div>
               {fieldData !== null && fieldData.length !== 0 ? (
                 <div className='no-scrollbar flex gap-[25px] overflow-y-hidden overflow-x-scroll'>
-
                   {fieldData.map((field) => (
                     <Link key={field._id} to={`/field/${field._id}`}>
                       <div className='h-[178px] w-[124px] rounded-[15px] bg-transparent'>

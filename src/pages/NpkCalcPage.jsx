@@ -41,21 +41,19 @@ const NpkCalcPage = () => {
           },
         })
         setTimeout(() => {
-
           navigate(`/analysis/npk/result`, {
             state: {
-              ...data, phosphor,
+              ...data,
+              phosphor,
               potassium,
               expectedProductivity,
-              nitrogen
-            }
+              nitrogen,
+            },
           })
         }, 6000)
       }
-
-    }
-    catch (error) {
-      console.log(error);
+    } catch (error) {
+      console.log(error)
     }
   }
   return (
@@ -94,6 +92,7 @@ const NpkCalcPage = () => {
                 </label>
                 <input
                   type='text'
+                  placeholder='exemplo mg dm⁻³'
                   className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
                   onChange={(e) => setPhosphor(e.target.value)}
                 />
@@ -104,6 +103,7 @@ const NpkCalcPage = () => {
                 </label>
                 <input
                   type='text'
+                  placeholder='exemplo mmol dm⁻³'
                   className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
                   onChange={(e) => setPotassium(e.target.value)}
                 />
@@ -136,6 +136,4 @@ const NpkCalcPage = () => {
   )
 }
 
-
 export default NpkCalcPage
-

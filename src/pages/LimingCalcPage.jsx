@@ -72,6 +72,7 @@ const LimingCalcPage = () => {
                   </label>
                   <input
                     type='text'
+                    placeholder='exemplo%'
                     className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
                     onChange={(e) => setCurrentBaseSaturation(e.target.value)}
                   />
@@ -80,6 +81,7 @@ const LimingCalcPage = () => {
                   <label className='text-lg font-medium'>CTC</label>
                   <input
                     type='text'
+                    placeholder='exemplo'
                     className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
                     onChange={(e) => setCTC(e.target.value)}
                   />
@@ -88,6 +90,7 @@ const LimingCalcPage = () => {
                   <label className='text-lg font-medium'>PRNT em %</label>
                   <input
                     type='text'
+                    placeholder='exemplo%'
                     className='w-[330px] border-b border-black/30 pb-[5px] text-sm text-banap-dark outline-none placeholder:text-banap-dark'
                     onChange={(e) => setPRNT(e.target.value)}
                   />

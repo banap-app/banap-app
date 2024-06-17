@@ -5,9 +5,9 @@ import { useEffect } from 'react'
 import { Toaster, toast } from 'sonner'
 
 const NpkResultPage = () => {
-  const {state} = useLocation()
+  const { state } = useLocation()
   const navigate = useNavigate()
-  
+
   async function handle() {
     toast.success('Sucesso na sua análise!', {
       duration: 5000,
@@ -22,12 +22,12 @@ const NpkResultPage = () => {
         success: 'text-green-700',
       },
     })
-    setTimeout(()=> {
+    setTimeout(() => {
       navigate(`/field/${state.idField}`)
     }, 6000)
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     handle()
   }, [state])
   return (

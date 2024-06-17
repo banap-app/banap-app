@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { RegisterUpperLines } from '../assets/PagesAssets'
 import { ArrowLeft, Home, Plus } from 'lucide-react'
 
-const Property = () => {
+const PropertyPage = () => {
   const navigate = useNavigate()
   return (
     <div className='relative flex h-full w-full flex-col items-center justify-center'>
@@ -36,4 +36,4 @@ const Property = () => {
   )
 }
 
-export default Property
+export default PropertyPage

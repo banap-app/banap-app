@@ -14,7 +14,7 @@ import LoginPage from './pages/LoginPage.jsx'
 import RegisterPage from './pages/RegisterPage.jsx'
 import HomePage from './pages/HomePage.jsx'
 import PropertyCreate from './pages/PropertyCreatePage.jsx'
-import Property from './pages/Property.jsx'
+import PropertyPage from './pages/PropertyPage.jsx'
 import FieldCreatePage from './pages/FieldCreatePage.jsx'
 import FieldUpdatePage from './pages/FieldUpdatePage.jsx'
 import FieldPage from './pages/FieldPage.jsx'
@@ -22,6 +22,7 @@ import LimingCalcPage from './pages/LimingCalcPage.jsx'
 import LimingResultPage from './pages/LimingResultPage.jsx'
 import NpkResultPage from './pages/NpkResultPage.jsx'
 import NpkCalcPage from './pages/NpkCalcPage.jsx'
+import AnalysisPage from './pages/AnalysisPage.jsx'
 
 const ProtectedRoutes = () => {
   const token = localStorage.getItem('token')
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
         children: [
           { path: 'home', element: <HomePage /> },
           { path: 'property/create', element: <PropertyCreate /> },
-          { path: 'property', element: <Property /> },
+          { path: 'property', element: <PropertyPage /> },
           { path: 'field/create/:id', element: <FieldCreatePage /> },
           { path: 'field/update/:id', element: <FieldUpdatePage /> },
           { path: 'field/:id', element: <FieldPage /> },
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
           { path: 'analysis/liming/result', element: <LimingResultPage /> },
           { path: 'analysis/npk/calc', element: <NpkCalcPage /> },
           { path: 'analysis/npk/result', element: <NpkResultPage /> },
+          { path: 'analysis', element: <AnalysisPage /> },
         ],
       },
     ],
