@@ -1,9 +1,38 @@
 import { ArrowLeft } from 'lucide-react'
 import { NPKResultImage, RegisterUpperLines } from '../assets/PagesAssets'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Toaster, toast } from 'sonner'
 
 const NpkResultPage = () => {
+  const {state} = useLocation()
+  const navigate = useNavigate()
+  
+  async function handle() {
+    toast.success('Sucesso na sua análise!', {
+      duration: 5000,
+      position: 'top-center',
+      classNames: {
+        toast: 'bg-white',
+        title: 'text-green-700',
+        actionButton: 'bg-green-700',
+        description: 'text-green-700',
+        cancelButton: 'bg-orange-400',
+        closeButton: 'bg-lime-400',
+        success: 'text-green-700',
+      },
+    })
+    setTimeout(()=> {
+      navigate(`/field/${state.idField}`)
+    }, 6000)
+  }
+
+  useEffect(()=>{
+    handle()
+  }, [state])
   return (
     <div className='relative flex h-[1080px] w-full flex-col items-center justify-center'>
+      <Toaster />
       <div className='absolute left-[30px] top-[40px]'>
         <ArrowLeft />
       </div>
@@ -39,7 +68,7 @@ const NpkResultPage = () => {
               </p>
               <div className='bottom-[0px] flex h-[47px] w-[125px] items-center justify-center rounded-[10px] border-white bg-white'>
                 <p className='text-center text-[24px] font-extrabold text-banap-light'>
-                  550kg/h
+                  {state.potassium}kg/h
                 </p>
               </div>
             </div>
@@ -49,7 +78,7 @@ const NpkResultPage = () => {
               </p>
               <div className='bottom-[0px] flex h-[47px] w-[125px] items-center justify-center rounded-[10px] border-white bg-white'>
                 <p className='text-center text-[24px] font-extrabold text-banap-light'>
-                  110kg/h
+                  {state.phosphor}kg/h
                 </p>
               </div>
             </div>
@@ -61,7 +90,7 @@ const NpkResultPage = () => {
               </p>
               <div className='bottom-[0px] flex h-[47px] w-[134] items-center justify-center rounded-[10px] border-white bg-white'>
                 <p className='text-center text-[24px] font-extrabold text-banap-light'>
-                  260kg/h
+                  {state.nitrogen}kg/h
                 </p>
               </div>
             </div>

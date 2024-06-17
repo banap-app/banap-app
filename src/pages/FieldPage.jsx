@@ -46,7 +46,7 @@ const FieldPage = () => {
         <RegisterUpperLines />
       </div>
       <div
-        onClick={() => navigate(-1)}
+        onClick={() => navigate('/home')}
         className='absolute left-[30px] top-[40px]'
       >
         <ArrowLeft />
