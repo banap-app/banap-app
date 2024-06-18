@@ -141,7 +141,7 @@ const HomePage = () => {
                   {fieldData.map((field) => (
                     <Link key={field._id} to={`/field/${field._id}`}>
                       <div className='h-[178px] w-[124px] rounded-[15px] bg-transparent'>
-                        <div className='h-[148px] w-[124px] rounded-t-[15px] bg-[#d9d9d9]'></div>
+                        <div className='h-[148px] w-[124px] rounded-t-[15px] bg-[url(src/assets/imgs/FieldImage.png)] bg-cover bg-center'></div>
                         <div className='flex h-[30px] w-[124px] items-center justify-center rounded-b-[15px] bg-banap-light'>
                           <p className='text-center text-sm font-semibold text-white'>
                             {field.name}
