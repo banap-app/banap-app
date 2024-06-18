@@ -20,7 +20,7 @@ const LimingCalcPage = () => {
         currentBaseSaturation: Number(currentBaseSaturation),
         totalCationExchangeCapacity: Number(CTC),
         relativeTotalNeutralizingPower: Number(PRNT),
-        desiredBaseSaturation: 10,
+        desiredBaseSaturation: 70,
         idField: state.idField,
       }
       const response = await customFetch('/analysis/create', 'POST', true, data)

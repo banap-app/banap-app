@@ -4,6 +4,7 @@ import {
   FieldIcon,
   PlantIcon,
   Troubleshoot,
+  AnalysisIcons,
 } from '../assets/PagesAssets'
 import { ArrowLeft, Trash2, Pen, Plus, FileText, RotateCw } from 'lucide-react'
 import DeleteModal from '../components/DeleteModal'
@@ -42,6 +43,7 @@ const FieldPage = () => {
 
   const [isModalVisible, setModalVisible] = useState(false)
   const [fieldData, setFieldData] = useState([])
+  const [analysisData, setAnalysisData] = useState([])
 
   async function fetchField() {
     try {
@@ -52,8 +54,25 @@ const FieldPage = () => {
     }
   }
 
+  async function fetchAnalysis() {
+    try {
+      const analysisData = await customFetch(
+        `/analysis/allAnalysis`,
+        'POST',
+        true,
+        {
+          idField: id,
+        }
+      )
+      setAnalysisData(analysisData.analysis)
+    } catch (error) {
+      console.error('Error fetching data', error)
+    }
+  }
+
   useEffect(() => {
     fetchField()
+    fetchAnalysis()
   }, [])
 
   const openModal = () => {
@@ -64,8 +83,10 @@ const FieldPage = () => {
     setModalVisible(false)
   }
 
+  console.log(analysisData)
+
   return (
-    <div className='relative flex h-[1140px] w-full flex-col items-center justify-center'>
+    <div className='relative flex h-[1200px] w-full flex-col items-center justify-center'>
       <div className='absolute left-[5px] top-[17px]'>
         <RegisterUpperLines />
       </div>
@@ -113,9 +134,11 @@ const FieldPage = () => {
                 Descrição
               </p>
             </div>
-            <p className='font-regular text-justify text-base'>
-              {fieldData.description}
-            </p>
+            <div className='w-[330px] text-wrap'>
+              <p className='font-regular text-justify text-base'>
+                {fieldData.description}
+              </p>
+            </div>
           </div>
           <div className='flex w-[330px] flex-col gap-[5px]'>
             <div className='flex items-center gap-[10px]'>
@@ -129,23 +152,56 @@ const FieldPage = () => {
             </p>
           </div>
         </div>
-        <div className='flex flex-col gap-[40px]'>
-          <div className='w-[330px]'>
-            <p className='text-center text-base font-bold text-[#8c8c8c]'>
-              Você ainda não<br></br>realizou nenhuma análise
-            </p>
+        {analysisData !== null && analysisData.length !== 0 ? (
+          <div className='flex flex-col gap-[60px]'>
+            <div className='flex flex-col items-end justify-center gap-[40px]'>
+              {analysisData.map((analysis, index) => (
+                <div
+                  key={analysis.uuid}
+                  className='flex h-[117px] w-[290px] items-center justify-between rounded-[30px] bg-banap-light px-[30px]'
+                >
+                  <div className='flex flex-col'>
+                    <p className='font-regular text-[20px] text-white'>
+                      Análise
+                    </p>
+                    <p className='text-[28px] font-extrabold text-white'>
+                      Análise {index + 1}
+                    </p>
+                  </div>
+                  <AnalysisIcons />
+                </div>
+              ))}
+            </div>
+            <div className='flex w-[330px] items-center justify-end'>
+              <Link
+                to={'/analysis/liming/calc'}
+                state={{ idField: fieldData._id }}
+                className='flex h-[56px] w-[177px] items-center justify-center gap-[10px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'
+              >
+                <Plus />
+                Nova Análise
+              </Link>
+            </div>
           </div>
-          <div className='flex w-[330px] items-center justify-center'>
-            <Link
-              to={'/analysis/liming/calc'}
-              state={{ idField: fieldData._id }}
-              className='flex h-[56px] w-[177px] items-center justify-center gap-[10px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'
-            >
-              <Plus />
-              Nova Análise
-            </Link>
+        ) : (
+          <div className='flex flex-col gap-[40px]'>
+            <div className='w-[330px]'>
+              <p className='text-center text-base font-bold text-[#8c8c8c]'>
+                Você ainda não<br></br>realizou nenhuma análise
+              </p>
+            </div>
+            <div className='flex w-[330px] items-center justify-center'>
+              <Link
+                to={'/analysis/liming/calc'}
+                state={{ idField: fieldData._id }}
+                className='flex h-[56px] w-[177px] items-center justify-center gap-[10px] rounded-[10px] bg-banap-light text-base font-extrabold text-white'
+              >
+                <Plus />
+                Nova Análise
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <DeleteModal
         visible={isModalVisible}
