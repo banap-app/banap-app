@@ -27,6 +27,17 @@ export default class AnalysisRouter {
         return res.status(403).json({ error: error.message })
       }
     })
+
+    this.router.post('/allAnalysis', this.authTokenMiddleware.verifyToken.bind(this.authTokenMiddleware), async (req,res) => {
+      try {
+        const httpRequest = new HttpRequest(req)
+        const result = await this.analysisController.handle(httpRequest)
+        res.status(200).json(result)
+      } catch (error) {
+        console.log('aaaaaaaa');
+        return res.status(403).json({ error: error.message + ' aaaa' })
+      }
+    })
   }
 
   getRouter () {

@@ -66,7 +66,7 @@ export default class AnalysisMySql extends AnalysisRepository {
     super.findAllByFieldId(fieldId)
     const connection = await this.createConnection()
     const [results, fields] = await connection.execute(
-      'SELECT * FROM analysis WHERE `fieldId` =?',
+      'SELECT * FROM analysis WHERE `idField` =?',
       [fieldId]
     )
     await this.closeConnection()
