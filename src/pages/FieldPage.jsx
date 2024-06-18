@@ -12,6 +12,30 @@ import { customFetch } from '../utils/api'
 import FieldImage from '../assets/imgs/FieldImage.png'
 
 const FieldPage = () => {
+  const HoverComponent = () => {
+    const [showIcon, setShowIcon] = useState(false)
+    console.log(showIcon)
+    return (
+      <div className='group relative'>
+        <img
+          onMouseEnter={() => setShowIcon(true)}
+          onMouseLeave={() => setShowIcon(false)}
+          className='h-full w-full rounded-[12px] transition-all group-hover:brightness-75'
+          src={FieldImage}
+        />
+        {showIcon && (
+          <div
+            onMouseEnter={() => setShowIcon(true)}
+            onMouseLeave={() => setShowIcon(false)}
+            className='absolute right-[140px] top-[115px]'
+          >
+            <RotateCw size='48px' strokeWidth='2px' color='white' />
+          </div>
+        )}
+      </div>
+    )
+  }
+
   let { id } = useParams()
 
   const navigate = useNavigate()
@@ -61,16 +85,7 @@ const FieldPage = () => {
           </div>
           <div className='flex flex-col gap-[20px]'>
             <div className='relative h-[320px] w-[330px] rounded-[10px] shadow-md'>
-              <img
-                src={FieldImage}
-                className='w-[330px] rounded-[13px] shadow-md'
-              />
-              <button
-                onClick={() => console.log('rotate')}
-                className='absolute right-[10px] top-[10px] opacity-0 hover:opacity-100'
-              >
-                <RotateCw strokeWidth='2px' color='white' />
-              </button>
+              <HoverComponent />
               <div className='flex items-center gap-[10px] p-[15px]'>
                 <PlantIcon />
                 <p className='text-base font-bold text-banap-light'>
