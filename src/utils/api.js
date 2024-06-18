@@ -41,6 +41,6 @@ export async function customFetch(
     }
   } catch (error) {
     console.error('Error fetching data:', error)
-    throw error
+    throw new Error(error)
   }
 }
